@@ -1,0 +1,3932 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Learnsphere | PMP Certification</title>
+
+  <!-- Learnsphere LS favicon -->
+  <link
+    rel="icon"
+    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='50' fill='%232580bd'/%3E%3Ctext x='50' y='61' text-anchor='middle' font-family='Arial' font-size='34' font-weight='800' fill='white'%3ELS%3C/text%3E%3C/svg%3E"
+  >
+
+  <style>
+
+    /* ==================================================
+       RESET
+    ================================================== */
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f7fb;
+      color: #172033;
+      line-height: 1.5;
+    }
+
+
+    body.modal-open {
+      overflow: hidden;
+    }
+
+
+    button,
+    a {
+      font-family: inherit;
+    }
+
+
+    /* ==================================================
+       NAVBAR
+    ================================================== */
+
+    .navbar {
+      height: 72px;
+      background: #ffffff;
+      border-bottom: 1px solid #e5e7eb;
+      display: flex;
+      align-items: center;
+      position: relative;
+      z-index: 20;
+    }
+
+
+    .nav-container {
+      width: min(1150px, 92%);
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 25px;
+    }
+
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: #172033;
+      font-size: 20px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+
+    /* LS logo */
+    .logo-icon {
+      width: 42px;
+      height: 42px;
+      min-width: 42px;
+      border-radius: 50%;
+      background: #2580bd;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 18px;
+    }
+
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+    }
+
+
+    .nav-links a {
+      text-decoration: none;
+      color: #172033;
+      font-size: 15px;
+      transition: color 0.2s ease;
+    }
+
+
+    .nav-links a:hover {
+      color: #2478ba;
+    }
+
+
+    .user-area {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+
+    .user-pill {
+      background: #f1f5f9;
+      padding: 10px 16px;
+      border-radius: 25px;
+      font-size: 14px;
+      color: #475569;
+      max-width: 180px;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+
+
+    .logout-btn {
+      border: none;
+      background: #2478ba;
+      color: #ffffff;
+      padding: 10px 17px;
+      border-radius: 7px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+
+    .logout-btn:hover {
+      background: #1d659d;
+    }
+
+
+    /* ==================================================
+       COURSE HERO
+    ================================================== */
+
+    .course-hero {
+      background: #00243d;
+      color: #ffffff;
+    }
+
+
+    .hero-container {
+      width: min(1150px, 92%);
+      margin: auto;
+      min-height: 350px;
+
+      display: grid;
+      grid-template-columns: 1fr 380px;
+
+      gap: 50px;
+      align-items: center;
+
+      padding: 55px 0;
+    }
+
+
+    .rating {
+      margin-bottom: 35px;
+      color: #ffffff;
+      font-size: 15px;
+    }
+
+
+    .course-title {
+      font-size: 40px;
+      margin-bottom: 22px;
+      line-height: 1.15;
+    }
+
+
+    .course-subtitle {
+      font-size: 16px;
+      color: #d8e8f4;
+      line-height: 1.6;
+      margin-bottom: 35px;
+      max-width: 700px;
+    }
+
+
+    .course-info {
+      display: flex;
+      gap: 35px;
+      flex-wrap: wrap;
+    }
+
+
+    .info-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding-right: 30px;
+      border-right: 1px solid rgba(255,255,255,.2);
+    }
+
+
+    .info-item:last-child {
+      border-right: none;
+    }
+
+
+    .info-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: #2685c5;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      flex-shrink: 0;
+    }
+
+
+    .info-text small {
+      display: block;
+      color: #c7d8e5;
+      margin-bottom: 5px;
+    }
+
+
+    .info-text strong {
+      font-size: 16px;
+    }
+
+
+    /* ==================================================
+       COURSE CARD
+    ================================================== */
+
+    .course-card {
+      background: #ffffff;
+      color: #172033;
+      border-radius: 10px;
+      padding: 22px;
+      box-shadow: 0 5px 25px rgba(0,0,0,.12);
+    }
+
+
+    .course-image {
+      height: 175px;
+      border-radius: 5px;
+
+      background:
+        linear-gradient(
+          135deg,
+          #2585bd,
+          #dcebf4
+        );
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      color: #ffffff;
+      font-size: 34px;
+      font-weight: 800;
+
+      margin-bottom: 25px;
+    }
+
+
+    .progress-box {
+      background: #eef5fa;
+      border-radius: 35px;
+      padding: 18px 22px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+
+    .progress-text {
+      color: #64748b;
+      margin-bottom: 10px;
+      font-size: 14px;
+    }
+
+
+    .progress-text strong {
+      color: #172033;
+    }
+
+
+    .progress-bar {
+      height: 7px;
+      background: #ffffff;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+
+    .progress-fill {
+      width: 0%;
+      height: 100%;
+      background: #2580bd;
+      transition: width .35s ease;
+    }
+
+
+    .progress-count {
+      display: block;
+      margin-top: 9px;
+      font-size: 12px;
+      color: #64748b;
+    }
+
+
+    .continue-btn {
+      width: 100%;
+      border: none;
+      background: #2c83b8;
+      color: #ffffff;
+
+      padding: 17px;
+
+      border-radius: 7px;
+
+      font-size: 16px;
+      font-weight: 700;
+
+      cursor: pointer;
+
+      margin-bottom: 20px;
+
+      transition:
+        background .2s ease,
+        transform .1s ease;
+    }
+
+
+    .continue-btn:hover {
+      background: #216d9c;
+    }
+
+
+    .continue-btn:active {
+      transform: scale(.99);
+    }
+
+
+    .card-actions {
+      display: flex;
+      justify-content: space-around;
+      color: #475569;
+      font-size: 14px;
+    }
+
+
+    /* ==================================================
+       MAIN
+    ================================================== */
+
+    .main-container {
+      width: min(1150px, 92%);
+      margin: 50px auto;
+
+      display: grid;
+      grid-template-columns: 1fr 320px;
+
+      gap: 35px;
+
+      align-items: start;
+    }
+
+
+    .content-card {
+      background: #ffffff;
+      border: 1px solid #e1e6ec;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+
+    /* ==================================================
+       TABS
+    ================================================== */
+
+    .tabs {
+      display: flex;
+      border-bottom: 1px solid #dce2e8;
+      overflow-x: auto;
+    }
+
+
+    .tab {
+      padding: 22px;
+      border: none;
+      background: none;
+
+      font-size: 15px;
+      font-weight: 600;
+
+      cursor: pointer;
+
+      color: #475569;
+
+      white-space: nowrap;
+    }
+
+
+    .tab.active {
+      color: #2478ba;
+      border-bottom: 3px solid #2478ba;
+    }
+
+
+    .tab-content {
+      padding: 28px;
+    }
+
+
+    .tab-panel {
+      display: none;
+    }
+
+
+    .tab-panel.active {
+      display: block;
+    }
+
+
+    /* ==================================================
+       DESCRIPTION
+    ================================================== */
+
+    .description {
+      color: #475569;
+      line-height: 1.8;
+      font-size: 15px;
+    }
+
+
+    .description h2 {
+      color: #172033;
+      margin-bottom: 18px;
+    }
+
+
+    .description p {
+      margin-bottom: 18px;
+    }
+
+
+    /* ==================================================
+       CURRICULUM
+    ================================================== */
+
+    .curriculum-heading {
+      margin-bottom: 20px;
+    }
+
+
+    .curriculum-section {
+      margin-bottom: 18px;
+      border: 1px solid #dfe5eb;
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+
+    .section-title {
+      background: #eef2f6;
+      padding: 18px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      font-weight: 700;
+
+      gap: 15px;
+    }
+
+
+    .section-count {
+      color: #475569;
+      font-size: 13px;
+      white-space: nowrap;
+    }
+
+
+    .lesson {
+      padding: 16px 18px;
+
+      border-top: 1px solid #e5e9ee;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      gap: 15px;
+    }
+
+
+    .lesson-left {
+      display: flex;
+      align-items: center;
+
+      gap: 12px;
+
+      min-width: 0;
+      flex: 1;
+    }
+
+
+    .lesson-icon {
+      color: #2478ba;
+      font-size: 18px;
+      flex-shrink: 0;
+      width: 22px;
+      text-align: center;
+    }
+
+
+    .lesson-title {
+      font-size: 14px;
+      font-weight: 600;
+      word-break: break-word;
+    }
+
+
+    .lesson.completed-row .lesson-title {
+      color: #047857;
+    }
+
+
+    .lesson-type {
+      color: #64748b;
+      font-size: 13px;
+      white-space: nowrap;
+    }
+
+
+    .locked {
+      color: #94a3b8;
+      background: #f8fafc;
+    }
+
+
+    .watch-btn,
+    .pdf-btn {
+      border: none;
+      background: #2478ba;
+      color: #ffffff;
+
+      padding: 8px 13px;
+
+      border-radius: 5px;
+
+      cursor: pointer;
+
+      font-size: 13px;
+
+      white-space: nowrap;
+    }
+
+
+    .watch-btn:hover,
+    .pdf-btn:hover {
+      background: #1d659d;
+    }
+
+
+    .completed {
+      color: #047857;
+      font-size: 13px;
+      font-weight: 600;
+      margin-right: 8px;
+      white-space: nowrap;
+    }
+
+
+    /* ==================================================
+       SIDEBAR
+    ================================================== */
+
+    .sidebar-card {
+      background: #ffffff;
+      border: 1px solid #e1e6ec;
+      border-radius: 8px;
+
+      padding: 25px;
+
+      height: fit-content;
+
+      position: sticky;
+      top: 20px;
+    }
+
+
+    .sidebar-card h2 {
+      margin-bottom: 20px;
+    }
+
+
+    .detail-row {
+      display: flex;
+      justify-content: space-between;
+
+      padding: 17px 0;
+
+      border-bottom: 1px solid #e2e7ec;
+
+      font-size: 14px;
+
+      gap: 20px;
+    }
+
+
+    .detail-row span {
+      color: #64748b;
+    }
+
+
+    .detail-row strong {
+      color: #172033;
+      text-align: right;
+    }
+
+
+    .access-message {
+      margin-top: 20px;
+
+      padding: 15px;
+
+      border-radius: 7px;
+
+      background: #f1f5f9;
+
+      color: #475569;
+
+      font-size: 13px;
+
+      line-height: 1.5;
+    }
+
+
+    .access-message.authorized {
+      background: #ecfdf5;
+      color: #047857;
+      border: 1px solid #a7f3d0;
+    }
+
+
+    .access-message.error {
+      background: #fff7ed;
+      color: #9a3412;
+      border: 1px solid #fed7aa;
+    }
+
+
+    /* ==================================================
+       VIDEO MODAL
+    ================================================== */
+
+    .video-modal {
+      display: none;
+
+      position: fixed;
+      inset: 0;
+
+      background: rgba(0,0,0,.82);
+
+      z-index: 9999;
+
+      padding: 25px;
+
+      align-items: center;
+      justify-content: center;
+    }
+
+
+    .video-modal.show {
+      display: flex;
+    }
+
+
+    .video-box {
+      width: min(950px, 96vw);
+
+      background: #101827;
+
+      border-radius: 10px;
+
+      overflow: hidden;
+
+      box-shadow: 0 20px 60px rgba(0,0,0,.4);
+    }
+
+
+    .video-header {
+      padding: 15px 18px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      color: #ffffff;
+
+      gap: 15px;
+    }
+
+
+    .video-header h3 {
+      font-size: 16px;
+      line-height: 1.4;
+    }
+
+
+    .close-video {
+      border: none;
+
+      background: #334155;
+
+      color: #ffffff;
+
+      width: 35px;
+      height: 35px;
+
+      border-radius: 50%;
+
+      cursor: pointer;
+
+      font-size: 18px;
+
+      flex-shrink: 0;
+    }
+
+
+    .close-video:hover {
+      background: #475569;
+    }
+
+
+    #videoPlayer {
+      width: 100%;
+
+      display: block;
+
+      background: #000000;
+
+      max-height: 70vh;
+    }
+
+
+    .video-footer {
+      padding: 15px 18px;
+
+      color: #cbd5e1;
+
+      font-size: 13px;
+
+      display: flex;
+
+      justify-content: space-between;
+
+      gap: 15px;
+
+      align-items: center;
+    }
+
+
+    .complete-btn {
+      border: none;
+
+      background: #2580bd;
+
+      color: #ffffff;
+
+      padding: 9px 14px;
+
+      border-radius: 6px;
+
+      cursor: pointer;
+
+      font-weight: 600;
+    }
+
+
+    .complete-btn:hover:not(:disabled) {
+      background: #1d659d;
+    }
+
+
+    .complete-btn:disabled {
+      opacity: .6;
+      cursor: default;
+    }
+
+
+    /* ==================================================
+       PDF MODAL
+    ================================================== */
+
+    .pdf-modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.82);
+      z-index: 9999;
+      padding: 18px;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .pdf-modal.show {
+      display: flex;
+    }
+
+    .pdf-box {
+      width: min(1100px, 96vw);
+      height: min(90vh, 900px);
+      background: #101827;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,.4);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .pdf-header {
+      padding: 12px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: #ffffff;
+      gap: 15px;
+    }
+
+    .pdf-header h3 {
+      font-size: 16px;
+      line-height: 1.4;
+    }
+
+    #pdfViewer {
+      width: 100%;
+      flex: 1;
+      border: 0;
+      background: #ffffff;
+    }
+
+    .pdf-footer {
+      padding: 10px 18px;
+      color: #cbd5e1;
+      font-size: 13px;
+    }
+
+
+    /* ==================================================
+       TOAST
+    ================================================== */
+
+    .toast {
+      position: fixed;
+
+      left: 50%;
+      bottom: 25px;
+
+      transform: translate(-50%, 20px);
+
+      background: #172033;
+      color: #ffffff;
+
+      padding: 12px 18px;
+
+      border-radius: 7px;
+
+      font-size: 13px;
+
+      opacity: 0;
+
+      pointer-events: none;
+
+      transition:
+        opacity .25s ease,
+        transform .25s ease;
+
+      z-index: 10000;
+
+      max-width: min(90vw, 500px);
+
+      text-align: center;
+    }
+
+
+    .toast.show {
+      opacity: 1;
+      transform: translate(-50%, 0);
+    }
+
+
+    .toast.success {
+      background: #047857;
+    }
+
+
+    .toast.error {
+      background: #b91c1c;
+    }
+
+
+    .mobile-menu-btn,
+    .mobile-nav {
+      display: none;
+    }
+
+
+    /* ==================================================
+       MOBILE
+    ================================================== */
+
+    @media (max-width: 850px) {
+
+      .nav-links {
+        display: none;
+      }
+
+      .mobile-menu-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 42px;
+        height: 42px;
+        border: 1px solid #dbe3ea;
+        border-radius: 8px;
+        background: #ffffff;
+        color: #172033;
+        cursor: pointer;
+        font-size: 22px;
+      }
+
+      .mobile-nav {
+        position: absolute;
+        top: 72px;
+        left: 0;
+        right: 0;
+        background: #ffffff;
+        border-bottom: 1px solid #e5e7eb;
+        box-shadow: 0 10px 25px rgba(0,0,0,.08);
+        padding: 10px 20px 14px;
+        flex-direction: column;
+        gap: 2px;
+      }
+
+      .mobile-nav.show {
+        display: flex;
+      }
+
+      .mobile-nav a {
+        color: #172033;
+        text-decoration: none;
+        padding: 12px 8px;
+        border-radius: 6px;
+      }
+
+      .mobile-nav a:hover {
+        background: #f1f5f9;
+      }
+
+
+      .hero-container,
+      .main-container {
+        grid-template-columns: 1fr;
+      }
+
+
+      .course-title {
+        font-size: 32px;
+      }
+
+
+      .sidebar-card {
+        position: static;
+      }
+
+    }
+
+
+    @media (max-width: 600px) {
+
+      .navbar {
+        height: 65px;
+      }
+
+      .mobile-nav {
+        top: 65px;
+      }
+
+
+      .nav-container {
+        width: min(100% - 24px, 1150px);
+      }
+
+
+      .logo {
+        font-size: 18px;
+      }
+
+
+      .logo-icon {
+        width: 38px;
+        height: 38px;
+        min-width: 38px;
+      }
+
+
+      .user-pill {
+        display: none;
+      }
+
+
+      .logout-btn {
+        padding: 9px 13px;
+      }
+
+
+      .hero-container {
+        width: min(100% - 28px, 1150px);
+        padding: 40px 0;
+      }
+
+
+      .course-info {
+        flex-direction: column;
+        gap: 18px;
+      }
+
+
+      .info-item {
+        border-right: none;
+        padding-right: 0;
+      }
+
+
+      .main-container {
+        width: min(100% - 24px, 1150px);
+        margin: 30px auto;
+      }
+
+
+      .tab-content {
+        padding: 20px;
+      }
+
+
+      .lesson {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+
+      .lesson > div:last-child {
+        width: 100%;
+      }
+
+
+      .watch-btn,
+      .pdf-btn {
+        width: 100%;
+      }
+
+
+      .video-modal,
+      .pdf-modal {
+        padding: 8px;
+      }
+
+      .pdf-box {
+        width: 100%;
+        height: 94vh;
+      }
+
+
+      .video-footer {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+
+      .complete-btn {
+        width: 100%;
+      }
+
+
+      .card-actions {
+        font-size: 13px;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+
+  <!-- ==================================================
+       NAVBAR
+  ================================================== -->
+
+  <header class="navbar">
+
+    <div class="nav-container">
+
+      <!-- Learnsphere LS logo -->
+      <a
+        href="index.html"
+        class="logo"
+      >
+
+        <div class="logo-icon">
+          LS
+        </div>
+
+        <span>
+          Learnsphere
+        </span>
+
+      </a>
+
+
+      <nav class="nav-links">
+
+        <a href="index.html">
+          Home
+        </a>
+
+        <a href="courses.html">
+          Courses
+        </a>
+
+        <a href="index.html#about">
+          About Us
+        </a>
+
+        <a href="index.html#contact">
+          Contact Us
+        </a>
+
+      </nav>
+
+      <button
+        class="mobile-menu-btn"
+        id="mobileMenuBtn"
+        onclick="toggleMobileMenu()"
+        aria-label="Open navigation menu"
+        aria-expanded="false"
+      >
+        ☰
+      </button>
+
+      <div class="user-area">
+
+        <span
+          class="user-pill"
+          id="userIdentifier"
+        >
+          Guest
+        </span>
+
+
+        <button
+          class="logout-btn"
+          onclick="logout()"
+        >
+          Log Out
+        </button>
+
+      </div>
+
+    </div>
+
+    <div class="mobile-nav" id="mobileNav">
+      <a href="index.html" onclick="closeMobileMenu()">Home</a>
+      <a href="courses.html" onclick="closeMobileMenu()">Courses</a>
+      <a href="index.html#about" onclick="closeMobileMenu()">About Us</a>
+      <a href="index.html#contact" onclick="closeMobileMenu()">Contact Us</a>
+    </div>
+
+  </header>
+
+
+
+  <!-- ==================================================
+       COURSE HERO
+  ================================================== -->
+
+  <section class="course-hero">
+
+    <div class="hero-container">
+
+
+      <div>
+
+        <div class="rating">
+          ★★★★★
+          <strong>0</strong>
+          &nbsp;
+          0 reviews
+        </div>
+
+
+        <h1 class="course-title">
+          PMP Certification
+        </h1>
+
+
+        <p class="course-subtitle">
+          Excel in Project Management with
+          Real-Time Expertise:
+          Ace the PMP Exam like a Pro!
+        </p>
+
+
+        <div class="course-info">
+
+
+          <div class="info-item">
+
+            <div class="info-icon">
+              👨‍🏫
+            </div>
+
+            <div class="info-text">
+
+              <small>
+                Instructor
+              </small>
+
+              <strong>
+                Learnsphere
+              </strong>
+
+            </div>
+
+          </div>
+
+
+          <div class="info-item">
+
+            <div class="info-icon">
+              ♙
+            </div>
+
+            <div class="info-text">
+
+              <small>
+                Category
+              </small>
+
+              <strong>
+                PMI
+              </strong>
+
+            </div>
+
+          </div>
+
+
+          <div class="info-item">
+
+            <div class="info-icon">
+              🎥
+            </div>
+
+            <div class="info-text">
+
+              <small>
+                Lectures
+              </small>
+
+              <strong>
+                16
+              </strong>
+
+            </div>
+
+          </div>
+
+
+        </div>
+
+      </div>
+
+
+
+      <!-- COURSE CARD -->
+
+      <div class="course-card">
+
+
+        <div class="course-image">
+          PMP
+        </div>
+
+
+        <div class="progress-box">
+
+          <div class="progress-text">
+
+            Course progress:
+            <strong id="progressPercent">
+              0%
+            </strong>
+
+          </div>
+
+
+          <div class="progress-bar">
+
+            <div
+              class="progress-fill"
+              id="progressFill"
+            ></div>
+
+          </div>
+
+
+          <span
+            class="progress-count"
+            id="progressCount"
+          >
+            0 of 21 available items completed
+          </span>
+
+        </div>
+
+
+        <button
+          class="continue-btn"
+          onclick="continueCourse()"
+        >
+          CONTINUE
+        </button>
+
+
+        <div class="card-actions">
+
+          <span>
+            ♡ Add to wishlist
+          </span>
+
+          <span>
+            ↗ Share
+          </span>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- ==================================================
+       MAIN CONTENT
+  ================================================== -->
+
+  <main class="main-container">
+
+
+    <!-- ==================================================
+         LEFT CONTENT
+    ================================================== -->
+
+    <section class="content-card">
+
+
+      <!-- TABS -->
+
+      <div class="tabs">
+
+        <button
+          class="tab active"
+          onclick="showTab('description', this)"
+        >
+          Description
+        </button>
+
+
+        <button
+          class="tab"
+          onclick="showTab('curriculum', this)"
+        >
+          Curriculum
+        </button>
+
+
+        <button
+          class="tab"
+          onclick="showTab('reviews', this)"
+        >
+          Reviews
+        </button>
+
+      </div>
+
+
+
+      <div class="tab-content">
+
+
+        <!-- ==================================================
+             DESCRIPTION
+        ================================================== -->
+
+        <div
+          id="description"
+          class="tab-panel active"
+        >
+
+          <div class="description">
+
+            <h2>
+              PMP Certification Course
+            </h2>
+
+
+            <p>
+              Prepare for the Project Management
+              Professional (PMP) certification
+              with structured learning covering
+              project management principles,
+              predictive approaches, agile practices
+              and hybrid project environments.
+            </p>
+
+
+            <p>
+              This course provides learners with
+              video lessons, examination preparation
+              material and supporting learning resources.
+            </p>
+
+
+            <p>
+              Course lectures and supporting
+              learning resources are protected by
+              Learnsphere authentication.
+              Only users authorized by the
+              administrator can access the
+              PMP course content.
+            </p>
+
+
+            <p>
+              Your course progress is automatically
+              saved to your Learnsphere account so
+              that completed learning items remain
+              available when you return to the course.
+            </p>
+
+          </div>
+
+        </div>
+
+
+
+        <!-- ==================================================
+             CURRICULUM
+        ================================================== -->
+
+        <div
+          id="curriculum"
+          class="tab-panel"
+        >
+
+
+          <h2 class="curriculum-heading">
+            Course Curriculum
+          </h2>
+
+
+
+          <!-- ==================================================
+               TRAINING VIDEOS
+          ================================================== -->
+
+          <div class="curriculum-section">
+
+
+            <div class="section-title">
+
+              <span>
+                🎥 Training Videos
+              </span>
+
+
+              <span
+                class="section-count"
+                id="videoCount"
+              >
+                0/16
+              </span>
+
+            </div>
+
+
+            <div
+              id="videoLessons"
+            ></div>
+
+          </div>
+
+
+
+          <!-- ==================================================
+               PDF GUIDE
+          ================================================== -->
+
+          <div class="curriculum-section">
+
+
+            <div class="section-title">
+
+              <span>
+                📄 PMP PDF Guide
+              </span>
+
+
+              <span
+                class="section-count"
+                id="pdfCount"
+              >
+                0/5
+              </span>
+
+            </div>
+
+
+            <div
+              id="pdfLessons"
+            ></div>
+
+          </div>
+
+
+
+          <!-- ==================================================
+               EXAM PRACTICE
+          ================================================== -->
+
+          <div class="curriculum-section">
+
+
+            <div class="section-title">
+
+              <span>
+                📝 Exam Practice
+              </span>
+
+
+              <span class="section-count">
+                Coming Soon
+              </span>
+
+            </div>
+
+
+            <div class="lesson locked">
+
+              <div class="lesson-left">
+
+                <span class="lesson-icon">
+                  🔒
+                </span>
+
+                <span class="lesson-title">
+                  Exam Set 1
+                </span>
+
+              </div>
+
+
+              <span class="lesson-type">
+                Coming soon
+              </span>
+
+            </div>
+
+
+            <div class="lesson locked">
+
+              <div class="lesson-left">
+
+                <span class="lesson-icon">
+                  🔒
+                </span>
+
+                <span class="lesson-title">
+                  Exam Set 2
+                </span>
+
+              </div>
+
+
+              <span class="lesson-type">
+                Coming soon
+              </span>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+
+        <!-- ==================================================
+             REVIEWS
+        ================================================== -->
+
+        <div
+          id="reviews"
+          class="tab-panel"
+        >
+
+          <h2>
+            Course Reviews
+          </h2>
+
+
+          <p
+            style="
+              margin-top:15px;
+              color:#64748b;
+            "
+          >
+            No reviews yet.
+          </p>
+
+        </div>
+
+
+      </div>
+
+    </section>
+
+
+
+    <!-- ==================================================
+         SIDEBAR
+    ================================================== -->
+
+    <aside class="sidebar-card">
+
+
+      <h2>
+        Course details
+      </h2>
+
+
+      <div class="detail-row">
+
+        <span>
+          Lectures
+        </span>
+
+        <strong>
+          16
+        </strong>
+
+      </div>
+
+
+      <div class="detail-row">
+
+        <span>
+          PDF Guides
+        </span>
+
+        <strong>
+          5
+        </strong>
+
+      </div>
+
+
+      <div class="detail-row">
+
+        <span>
+          Quizzes
+        </span>
+
+        <strong>
+          2
+        </strong>
+
+      </div>
+
+
+      <div class="detail-row">
+
+        <span>
+          Level
+        </span>
+
+        <strong>
+          Advanced
+        </strong>
+
+      </div>
+
+
+      <div class="detail-row">
+
+        <span>
+          Category
+        </span>
+
+        <strong>
+          PMI
+        </strong>
+
+      </div>
+
+
+      <div
+        class="access-message"
+        id="accessMessage"
+      >
+        Checking course access...
+      </div>
+
+
+    </aside>
+
+  </main>
+
+
+
+  <!-- ==================================================
+       VIDEO MODAL
+  ================================================== -->
+
+  <div
+    class="video-modal"
+    id="videoModal"
+  >
+
+
+    <div class="video-box">
+
+
+      <div class="video-header">
+
+        <h3 id="videoTitle">
+          PMP Lecture
+        </h3>
+
+
+        <button
+          class="close-video"
+          onclick="closeVideo()"
+          aria-label="Close video"
+        >
+          ×
+        </button>
+
+      </div>
+
+
+      <video
+        id="videoPlayer"
+        controls
+        controlsList="nodownload"
+        preload="metadata"
+        playsinline
+      ></video>
+
+
+      <div class="video-footer">
+
+        <span id="videoStatus">
+          Protected PMP lecture
+        </span>
+
+
+        <button
+          class="complete-btn"
+          id="completeButton"
+          onclick="markCurrentVideoComplete()"
+        >
+          Mark as Read
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+
+  <!-- ==================================================
+       PDF MODAL
+  ================================================== -->
+
+  <div
+    class="pdf-modal"
+    id="pdfModal"
+    aria-hidden="true"
+  >
+    <div class="pdf-box">
+      <div class="pdf-header">
+        <h3 id="pdfTitle">PMP PDF Guide</h3>
+        <button
+          class="close-video"
+          onclick="closePDF()"
+          aria-label="Close PDF"
+        >
+          ×
+        </button>
+      </div>
+
+      <iframe
+        id="pdfViewer"
+        title="PMP PDF viewer"
+        loading="lazy"
+      ></iframe>
+
+      <div class="pdf-footer">
+        <span id="pdfStatus">Loading protected PDF...</span>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ==================================================
+       TOAST
+  ================================================== -->
+
+  <div
+    id="toast"
+    class="toast"
+  ></div>
+
+
+
+  <script>
+
+    /* ==================================================
+       CONFIGURATION
+    ================================================== */
+
+    const API_URL =
+      window.LEARNSPHERE_API_URL ||
+      ((window.location.hostname === "localhost" ||
+        window.location.hostname === "127.0.0.1")
+        ? "http://localhost:5000/api"
+        : `${window.location.origin}/api`);
+
+
+    /* ==================================================
+       COURSE TOTALS
+
+       16 videos
+       5 PDFs
+
+       Exams are coming soon and therefore are NOT
+       included in the current completion percentage.
+    ================================================== */
+
+    const TOTAL_VIDEOS = 16;
+    const TOTAL_PDFS = 5;
+    const TOTAL_AVAILABLE_ITEMS =
+      TOTAL_VIDEOS + TOTAL_PDFS;
+
+
+
+    /* ==================================================
+       PMP LECTURES
+    ================================================== */
+
+    const lectures = [
+
+      {
+        number: 1,
+        title:
+          "PMP Exam Introduction and Overview",
+        filename:
+          "pmp-exam-introduction-and-overview.mp4"
+      },
+
+      {
+        number: 2,
+        title:
+          "PMP Exam Passing Score & PMP Exam Report",
+        filename:
+          "pmp-exam-passing-score-and-exam-report.mp4"
+      },
+
+      {
+        number: 3,
+        title:
+          "The PMP Exam Content Outline",
+        filename:
+          "pmp-exam-content-outline.mp4"
+      },
+
+      {
+        number: 4,
+        title:
+          "The PMBOK Guide - Overview",
+        filename:
+          "pmbok-guide-overview.mp4"
+      },
+
+      {
+        number: 5,
+        title:
+          "The PMBOK Guide - Principles 1",
+        filename:
+          "pmbok-guide-principles-1.mp4"
+      },
+
+      {
+        number: 6,
+        title:
+          "The PMBOK Guide - Principles 2",
+        filename:
+          "pmbok-guide-principles-2.mp4"
+      },
+
+      {
+        number: 7,
+        title:
+          "The PMBOK Guide - Principles 3",
+        filename:
+          "pmbok-guide-principles-3.mp4"
+      },
+
+      {
+        number: 8,
+        title:
+          "The PMBOK Guide - Performance",
+        filename:
+          "pmbok-guide-performance.mp4"
+      },
+
+      {
+        number: 9,
+        title:
+          "The PMBOK Guide - Performance Domains",
+        filename:
+          "pmbok-guide-performance-domains.mp4"
+      },
+
+      {
+        number: 10,
+        title:
+          "The Agile Manifesto",
+        filename:
+          "agile-manifesto.mp4"
+      },
+
+      {
+        number: 11,
+        title:
+          "PMP Exam Mindset Part 1",
+        filename:
+          "pmp-exam-mindset-part-1.mp4"
+      },
+
+      {
+        number: 12,
+        title:
+          "PMP Exam Mindset Part 2",
+        filename:
+          "pmp-exam-mindset-part-2.mp4"
+      },
+
+      {
+        number: 13,
+        title:
+          "PMP Exam Mindset Part 3",
+        filename:
+          "pmp-exam-mindset-part-3-exam-taking.mp4"
+      },
+
+      {
+        number: 14,
+        title:
+          "Certification Renewal and PDUs",
+        filename:
+          "certification-renewal-and-pdus.mp4"
+      },
+
+      {
+        number: 15,
+        title:
+          "PMP Exam Lessons Learned - Dana Domnisor",
+        filename:
+          "pmp-exam-lessons-learned-dana-domnisor.mp4"
+      },
+
+      {
+        number: 16,
+        title:
+          "PMP Exam Lessons Learned - Sudip Roy",
+        filename:
+          "pmp-exam-lessons-learned-sudip-roy.mp4"
+      }
+
+    ];
+
+
+
+    /* ==================================================
+       PMP PDF GUIDES
+    ================================================== */
+
+    const pdfGuides = [
+
+      {
+        number: 1,
+        title:
+          "Agile Practice Guide",
+        filename:
+          "Agile Practice Guide.pdf"
+      },
+
+      {
+        number: 2,
+        title:
+          "PMBOK 6th edition",
+        filename:
+          "PMBOK 6th edition.pdf"
+      },
+
+      {
+        number: 3,
+        title:
+          "PMBOK-7 infographic_A1_en",
+        filename:
+          "PMBOK-7 infographic_A1_en.pdf"
+      },
+
+      {
+        number: 4,
+        title:
+          "PMBOK - 7",
+        filename:
+          "PMBOK - 7.pdf"
+      },
+
+      {
+        number: 5,
+        title:
+          "PMP_Notes_Mapping_Prep2ECO",
+        filename:
+          "PMP_Notes_Mapping_Prep2ECO.pdf"
+      }
+
+    ];
+
+
+
+    /* ==================================================
+       PROGRESS STATE
+    ================================================== */
+
+    let completedVideos = [];
+
+    let completedPDFs = [];
+
+    let currentVideoIndex = null;
+
+    let courseAccessGranted = false;
+
+    let progressSaving = false;
+
+
+
+    /* ==================================================
+       TOKEN
+    ================================================== */
+
+    function getToken() {
+
+      return localStorage.getItem(
+        "learnsphereToken"
+      );
+
+    }
+
+
+
+    /* ==================================================
+       USER
+    ================================================== */
+
+    function getSavedUser() {
+
+      const savedUser =
+        localStorage.getItem(
+          "learnsphereUser"
+        );
+
+      if (!savedUser) {
+        return null;
+      }
+
+      try {
+
+        return JSON.parse(
+          savedUser
+        );
+
+      } catch (error) {
+
+        console.error(
+          "Could not read saved user:",
+          error
+        );
+
+        return null;
+      }
+
+    }
+
+
+
+    function displayUser() {
+
+      const user =
+        getSavedUser();
+
+      if (
+        user &&
+        user.identifier
+      ) {
+
+        document.getElementById(
+          "userIdentifier"
+        ).textContent =
+          user.identifier;
+
+      }
+
+    }
+
+
+
+    /* ==================================================
+       LOGOUT
+    ================================================== */
+
+    function logout() {
+
+      localStorage.removeItem(
+        "learnsphereUser"
+      );
+
+      localStorage.removeItem(
+        "learnsphereToken"
+      );
+
+      window.location.href =
+        "index.html";
+
+    }
+
+
+
+    /* ==================================================
+       TOAST
+    ================================================== */
+
+    let toastTimer = null;
+
+
+    function showToast(
+      message,
+      type = ""
+    ) {
+
+      const toast =
+        document.getElementById(
+          "toast"
+        );
+
+      toast.textContent =
+        message;
+
+      toast.className =
+        "toast show " +
+        type;
+
+      clearTimeout(
+        toastTimer
+      );
+
+      toastTimer =
+        setTimeout(() => {
+
+          toast.className =
+            "toast";
+
+        }, 3500);
+
+    }
+
+
+
+    /* ==================================================
+       TABS
+    ================================================== */
+
+    function showTab(
+      tabId,
+      button
+    ) {
+
+      document
+        .querySelectorAll(
+          ".tab-panel"
+        )
+        .forEach(panel => {
+
+          panel.classList.remove(
+            "active"
+          );
+
+        });
+
+
+      document
+        .querySelectorAll(
+          ".tab"
+        )
+        .forEach(tab => {
+
+          tab.classList.remove(
+            "active"
+          );
+
+        });
+
+
+      const panel =
+        document.getElementById(
+          tabId
+        );
+
+      if (panel) {
+
+        panel.classList.add(
+          "active"
+        );
+
+      }
+
+
+      if (button) {
+
+        button.classList.add(
+          "active"
+        );
+
+      }
+
+    }
+
+
+
+    /* ==================================================
+       NORMALIZE PROGRESS
+    ================================================== */
+
+    function normalizeIndexes(
+      values,
+      maxExclusive
+    ) {
+
+      if (!Array.isArray(values)) {
+        return [];
+      }
+
+
+      return [
+        ...new Set(
+          values
+            .map(Number)
+            .filter(
+              value =>
+                Number.isInteger(value) &&
+                value >= 0 &&
+                value < maxExclusive
+            )
+        )
+      ].sort(
+        (a, b) => a - b
+      );
+
+    }
+
+
+
+    /* ==================================================
+       UPDATE COURSE PROGRESS
+    ================================================== */
+
+    function updateProgress() {
+
+      const completed =
+        completedVideos.length +
+        completedPDFs.length;
+
+
+      const percentage =
+        TOTAL_AVAILABLE_ITEMS === 0
+          ? 0
+          : Math.round(
+              (
+                completed /
+                TOTAL_AVAILABLE_ITEMS
+              ) * 100
+            );
+
+
+      document.getElementById(
+        "progressPercent"
+      ).textContent =
+        percentage + "%";
+
+
+      document.getElementById(
+        "progressFill"
+      ).style.width =
+        percentage + "%";
+
+
+      document.getElementById(
+        "progressCount"
+      ).textContent =
+        `${completed} of ${TOTAL_AVAILABLE_ITEMS} available items completed`;
+
+    }
+
+
+
+    /* ==================================================
+       RENDER VIDEO LESSONS
+    ================================================== */
+
+    function renderVideoLessons(
+      hasAccess
+    ) {
+
+      const container =
+        document.getElementById(
+          "videoLessons"
+        );
+
+
+      container.innerHTML = "";
+
+
+      lectures.forEach(
+        (lecture, index) => {
+
+          const lesson =
+            document.createElement(
+              "div"
+            );
+
+
+          const isCompleted =
+            completedVideos.includes(
+              index
+            );
+
+
+          lesson.className =
+            "lesson" +
+            (
+              hasAccess
+                ? (
+                    isCompleted
+                      ? " completed-row"
+                      : ""
+                  )
+                : " locked"
+            );
+
+
+          if (hasAccess) {
+
+            lesson.innerHTML = `
+
+              <div class="lesson-left">
+
+                <span class="lesson-icon">
+                  ${
+                    isCompleted
+                      ? "✓"
+                      : "▶"
+                  }
+                </span>
+
+                <span class="lesson-title">
+                  ${lecture.number}.
+                  ${lecture.title}
+                </span>
+
+              </div>
+
+
+              <div>
+
+                ${
+                  isCompleted
+                    ? `
+                      <span class="completed">
+                        Completed ✓
+                      </span>
+                    `
+                    : ""
+                }
+
+                <button
+                  class="watch-btn"
+                  onclick="openLecture(${index})"
+                >
+                  ${
+                    isCompleted
+                      ? "Watch Again"
+                      : "Watch Lecture"
+                  }
+                </button>
+
+              </div>
+
+            `;
+
+          } else {
+
+            lesson.innerHTML = `
+
+              <div class="lesson-left">
+
+                <span class="lesson-icon">
+                  🔒
+                </span>
+
+                <span class="lesson-title">
+                  ${lecture.number}.
+                  ${lecture.title}
+                </span>
+
+              </div>
+
+
+              <span class="lesson-type">
+                Locked
+              </span>
+
+            `;
+
+          }
+
+
+          container.appendChild(
+            lesson
+          );
+
+        }
+      );
+
+
+      document.getElementById(
+        "videoCount"
+      ).textContent =
+        hasAccess
+          ? `${completedVideos.length}/${TOTAL_VIDEOS}`
+          : `0/${TOTAL_VIDEOS}`;
+
+
+      updateProgress();
+
+    }
+
+
+
+    /* ==================================================
+       RENDER PDF LESSONS
+    ================================================== */
+
+    function renderPDFLessons(
+      hasAccess
+    ) {
+
+      const container =
+        document.getElementById(
+          "pdfLessons"
+        );
+
+
+      container.innerHTML = "";
+
+
+      pdfGuides.forEach(
+        (pdf, index) => {
+
+          const lesson =
+            document.createElement(
+              "div"
+            );
+
+
+          const isCompleted =
+            completedPDFs.includes(
+              index
+            );
+
+
+          if (hasAccess) {
+
+            lesson.className =
+              "lesson" +
+              (
+                isCompleted
+                  ? " completed-row"
+                  : ""
+              );
+
+
+            lesson.innerHTML = `
+
+              <div class="lesson-left">
+
+                <span class="lesson-icon">
+                  ${
+                    isCompleted
+                      ? "✓"
+                      : "📄"
+                  }
+                </span>
+
+                <span class="lesson-title">
+                  ${pdf.number}.
+                  ${pdf.title}
+                </span>
+
+              </div>
+
+
+              <div>
+
+                ${
+                  isCompleted
+                    ? `
+                      <span class="completed">
+                        Completed ✓
+                      </span>
+                    `
+                    : ""
+                }
+
+                <button
+                  class="pdf-btn"
+                  onclick="openPDF(${index})"
+                >
+                  ${
+                    isCompleted
+                      ? "Open PDF Again"
+                      : "Open PDF"
+                  }
+                </button>
+
+              </div>
+
+            `;
+
+          } else {
+
+            lesson.className =
+              "lesson locked";
+
+
+            lesson.innerHTML = `
+
+              <div class="lesson-left">
+
+                <span class="lesson-icon">
+                  🔒
+                </span>
+
+                <span class="lesson-title">
+                  ${pdf.number}.
+                  ${pdf.title}
+                </span>
+
+              </div>
+
+
+              <span class="lesson-type">
+                Locked
+              </span>
+
+            `;
+
+          }
+
+
+          container.appendChild(
+            lesson
+          );
+
+        }
+      );
+
+
+      document.getElementById(
+        "pdfCount"
+      ).textContent =
+        hasAccess
+          ? `${completedPDFs.length}/${TOTAL_PDFS}`
+          : `0/${TOTAL_PDFS}`;
+
+
+      updateProgress();
+
+    }
+
+
+
+    /* ==================================================
+       CHECK COURSE ACCESS
+    ================================================== */
+
+    async function checkCourseAccess() {
+
+      const token =
+        getToken();
+
+
+      const message =
+        document.getElementById(
+          "accessMessage"
+        );
+
+
+      if (!token) {
+
+        courseAccessGranted =
+          false;
+
+
+        message.classList.remove(
+          "authorized"
+        );
+
+
+        message.classList.add(
+          "error"
+        );
+
+
+        message.innerHTML =
+          "🔒 You are not logged in.<br><br>" +
+          "Please log in to access the PMP course.";
+
+
+        renderVideoLessons(
+          false
+        );
+
+        renderPDFLessons(
+          false
+        );
+
+
+        return false;
+
+      }
+
+
+      try {
+
+        const response =
+          await fetch(
+            API_URL +
+            "/pmp-test",
+            {
+              method: "GET",
+
+              headers: {
+                Authorization:
+                  "Bearer " +
+                  token
+              }
+            }
+          );
+
+
+        const data =
+          await response
+            .json()
+            .catch(
+              () => ({})
+            );
+
+
+        if (response.ok) {
+
+          courseAccessGranted =
+            true;
+
+
+          message.classList.remove(
+            "error"
+          );
+
+
+          message.classList.add(
+            "authorized"
+          );
+
+
+          message.textContent =
+            "✓ PMP course access granted.";
+
+
+          renderVideoLessons(
+            true
+          );
+
+
+          renderPDFLessons(
+            true
+          );
+
+
+          await loadProgress();
+
+
+          return true;
+
+        }
+
+
+        courseAccessGranted =
+          false;
+
+
+        message.classList.remove(
+          "authorized"
+        );
+
+
+        message.classList.add(
+          "error"
+        );
+
+
+        message.textContent =
+          data.message ||
+          "🔒 PMP course content is locked. Admin authorization is required.";
+
+
+        renderVideoLessons(
+          false
+        );
+
+
+        renderPDFLessons(
+          false
+        );
+
+
+        return false;
+
+      } catch (error) {
+
+        console.error(
+          "Course access error:",
+          error
+        );
+
+
+        courseAccessGranted =
+          false;
+
+
+        message.classList.remove(
+          "authorized"
+        );
+
+
+        message.classList.add(
+          "error"
+        );
+
+
+        message.textContent =
+          "Unable to connect to the Learnsphere server.";
+
+
+        renderVideoLessons(
+          false
+        );
+
+
+        renderPDFLessons(
+          false
+        );
+
+
+        return false;
+
+      }
+
+    }
+
+
+
+    /* ==================================================
+       LOAD PROGRESS FROM MONGODB
+    ================================================== */
+
+    async function loadProgress() {
+
+      const token =
+        getToken();
+
+
+      if (!token) {
+        return false;
+      }
+
+
+      try {
+
+        const response =
+          await fetch(
+            API_URL +
+            "/pmp-progress",
+            {
+              method: "GET",
+
+              headers: {
+                Authorization:
+                  "Bearer " +
+                  token
+              }
+            }
+          );
+
+
+        const data =
+          await response
+            .json()
+            .catch(
+              () => ({})
+            );
+
+
+        if (!response.ok) {
+
+          console.error(
+            "Progress loading failed:",
+            data
+          );
+
+          return false;
+
+        }
+
+
+        completedVideos =
+          normalizeIndexes(
+            data.progress?.videos,
+            TOTAL_VIDEOS
+          );
+
+
+        completedPDFs =
+          normalizeIndexes(
+            data.progress?.pdfs,
+            TOTAL_PDFS
+          );
+
+
+        renderVideoLessons(
+          true
+        );
+
+
+        renderPDFLessons(
+          true
+        );
+
+
+        return true;
+
+      } catch (error) {
+
+        console.error(
+          "Progress loading error:",
+          error
+        );
+
+        return false;
+
+      }
+
+    }
+
+
+
+    /* ==================================================
+       SAVE PROGRESS ITEM
+
+       Primary API format:
+
+       {
+         itemType: "video",
+         index: 0
+       }
+
+       or
+
+       {
+         itemType: "pdf",
+         index: 0
+       }
+
+       This matches the current backend.
+    ================================================== */
+
+    async function saveProgressItem(
+      itemType,
+      index
+    ) {
+
+      const token =
+        getToken();
+
+
+      if (!token) {
+
+        showToast(
+          "Please log in again.",
+          "error"
+        );
+
+        return false;
+
+      }
+
+
+      if (
+        progressSaving
+      ) {
+
+        return false;
+
+      }
+
+
+      progressSaving =
+        true;
+
+
+      try {
+
+        const numericIndex =
+          Number(index);
+
+
+        if (
+          !Number.isInteger(
+            numericIndex
+          )
+        ) {
+
+          throw new Error(
+            "Invalid progress index."
+          );
+
+        }
+
+
+        const payload = {
+          itemType:
+            String(itemType),
+          index:
+            numericIndex
+        };
+
+
+        console.log(
+          "Saving PMP progress:",
+          payload
+        );
+
+
+        let response =
+          await fetch(
+            API_URL +
+            "/pmp-progress",
+            {
+              method: "PUT",
+
+              headers: {
+                "Content-Type":
+                  "application/json",
+
+                Authorization:
+                  "Bearer " +
+                  token
+              },
+
+              body:
+                JSON.stringify(
+                  payload
+                )
+            }
+          );
+
+
+        let data =
+          await response
+            .json()
+            .catch(
+              () => ({})
+            );
+
+
+        /*
+          Compatibility fallback.
+
+          The current server accepts:
+          video / pdf / exam.
+
+          If an older running server is still
+          using "lecture" for videos, retry once.
+        */
+
+        if (
+          !response.ok &&
+          itemType === "video" &&
+          data.message ===
+            "Invalid progress item type."
+        ) {
+
+          console.warn(
+            "Backend rejected 'video'. Trying legacy 'lecture' compatibility mode."
+          );
+
+
+          response =
+            await fetch(
+              API_URL +
+              "/pmp-progress",
+              {
+                method: "PUT",
+
+                headers: {
+                  "Content-Type":
+                    "application/json",
+
+                  Authorization:
+                    "Bearer " +
+                    token
+                },
+
+                body:
+                  JSON.stringify({
+                    itemType:
+                      "lecture",
+                    index:
+                      numericIndex
+                  })
+              }
+            );
+
+
+          data =
+            await response
+              .json()
+              .catch(
+                () => ({})
+              );
+
+        }
+
+
+        if (!response.ok) {
+
+          console.error(
+            "Progress save failed:",
+            data
+          );
+
+
+          const message =
+            data.message ||
+            "Could not save progress. Please try again.";
+
+
+          showToast(
+            message,
+            "error"
+          );
+
+
+          return false;
+
+        }
+
+
+        if (
+          data.progress
+        ) {
+
+          if (
+            Array.isArray(
+              data.progress.videos
+            )
+          ) {
+
+            completedVideos =
+              normalizeIndexes(
+                data.progress.videos,
+                TOTAL_VIDEOS
+              );
+
+          }
+
+
+          if (
+            Array.isArray(
+              data.progress.pdfs
+            )
+          ) {
+
+            completedPDFs =
+              normalizeIndexes(
+                data.progress.pdfs,
+                TOTAL_PDFS
+              );
+
+          }
+
+        } else {
+
+          /*
+            Defensive local update.
+
+            Normally the backend always returns
+            progress, but this keeps the interface
+            synchronized if an older compatible
+            backend does not return the arrays.
+          */
+
+          if (
+            itemType === "video"
+          ) {
+
+            completedVideos =
+              normalizeIndexes(
+                [
+                  ...completedVideos,
+                  numericIndex
+                ],
+                TOTAL_VIDEOS
+              );
+
+          }
+
+
+          if (
+            itemType === "pdf"
+          ) {
+
+            completedPDFs =
+              normalizeIndexes(
+                [
+                  ...completedPDFs,
+                  numericIndex
+                ],
+                TOTAL_PDFS
+              );
+
+          }
+
+        }
+
+
+        renderVideoLessons(
+          true
+        );
+
+
+        renderPDFLessons(
+          true
+        );
+
+
+        updateProgress();
+
+
+        showToast(
+          "Progress saved successfully.",
+          "success"
+        );
+
+
+        return true;
+
+      } catch (error) {
+
+        console.error(
+          "Progress save error:",
+          error
+        );
+
+
+        showToast(
+          "Could not save progress. Please try again.",
+          "error"
+        );
+
+
+        return false;
+
+      } finally {
+
+        progressSaving =
+          false;
+
+      }
+
+    }
+
+
+
+    /* ==================================================
+       SAVE VIDEO COMPLETION
+    ================================================== */
+
+    async function saveVideoCompletion(
+      index
+    ) {
+
+      return await saveProgressItem(
+        "video",
+        Number(index)
+      );
+
+    }
+
+
+
+    /* ==================================================
+       SAVE PDF COMPLETION
+    ================================================== */
+
+    async function savePDFCompletion(
+      index
+    ) {
+
+      return await saveProgressItem(
+        "pdf",
+        Number(index)
+      );
+
+    }
+
+
+
+    /* ==================================================
+       OPEN LECTURE
+    ================================================== */
+
+    async function openLecture(index) {
+
+      const token = getToken();
+
+      if (!token) {
+        alert("Please log in first.");
+        return;
+      }
+
+      const lecture = lectures[index];
+
+      if (!lecture) {
+        alert("Lecture not found.");
+        return;
+      }
+
+      currentVideoIndex = index;
+
+      document.getElementById("videoTitle").textContent =
+        `${lecture.number}. ${lecture.title}`;
+
+      document.getElementById("videoStatus").textContent =
+        completedVideos.includes(index)
+          ? "Lecture already completed."
+          : "Preparing protected PMP lecture...";
+
+      const completeButton = document.getElementById("completeButton");
+      completeButton.disabled = completedVideos.includes(index);
+      completeButton.textContent = completedVideos.includes(index)
+        ? "Completed ✓"
+        : "Mark as Read";
+
+      const videoPlayer = document.getElementById("videoPlayer");
+      videoPlayer.crossOrigin = "anonymous";
+
+      try {
+        const response = await fetch(
+          API_URL +
+          "/pmp/media-url?type=video&filename=" +
+          encodeURIComponent(lecture.filename),
+          {
+            method: "GET",
+            headers: {
+              Authorization: "Bearer " + token
+            },
+            cache: "no-store"
+          }
+        );
+
+        const data = await response.json().catch(() => ({}));
+
+        if (!response.ok || !data.success || !data.url) {
+          if (response.status === 401) {
+            logout();
+            return;
+          }
+
+          throw new Error(
+            data.message || "Could not prepare the protected video."
+          );
+        }
+
+        videoPlayer.src = data.url;
+        document.getElementById("videoModal").classList.add("show");
+        document.body.classList.add("modal-open");
+        document.getElementById("videoStatus").textContent =
+          completedVideos.includes(index)
+            ? "Lecture already completed."
+            : "Protected PMP lecture";
+
+        videoPlayer.load();
+
+        try {
+          await videoPlayer.play();
+        } catch (error) {
+          console.log("Automatic playback was blocked by the browser.");
+        }
+      } catch (error) {
+        console.error("Video access error:", error);
+        showToast(
+          "Unable to open this lecture. Please try again.",
+          "error"
+        );
+      }
+    }
+
+
+    /* ==================================================
+       CLOSE VIDEO
+    ================================================== */
+
+    function closeVideo() {
+
+      const videoPlayer =
+        document.getElementById(
+          "videoPlayer"
+        );
+
+
+      videoPlayer.pause();
+
+
+      videoPlayer.removeAttribute(
+        "src"
+      );
+
+
+      videoPlayer.load();
+
+
+      document.getElementById(
+        "videoModal"
+      ).classList.remove(
+        "show"
+      );
+
+
+      document.body.classList.remove(
+        "modal-open"
+      );
+
+
+      currentVideoIndex =
+        null;
+
+    }
+
+
+
+    /* ==================================================
+       MARK CURRENT VIDEO AS READ
+    ================================================== */
+
+    async function markCurrentVideoComplete() {
+
+      if (
+        currentVideoIndex === null
+      ) {
+
+        return;
+
+      }
+
+
+      const index =
+        currentVideoIndex;
+
+
+      if (
+        completedVideos.includes(
+          index
+        )
+      ) {
+
+        return;
+
+      }
+
+
+      const button =
+        document.getElementById(
+          "completeButton"
+        );
+
+
+      button.disabled =
+        true;
+
+
+      button.textContent =
+        "Saving...";
+
+
+      document.getElementById(
+        "videoStatus"
+      ).textContent =
+        "Saving your progress...";
+
+
+      const success =
+        await saveVideoCompletion(
+          index
+        );
+
+
+      if (success) {
+
+        button.disabled =
+          true;
+
+
+        button.textContent =
+          "Completed ✓";
+
+
+        document.getElementById(
+          "videoStatus"
+        ).textContent =
+          "Lecture completed and progress saved.";
+
+      } else {
+
+        button.disabled =
+          false;
+
+
+        button.textContent =
+          "Try Again";
+
+
+        document.getElementById(
+          "videoStatus"
+        ).textContent =
+          "Progress could not be saved. Please try again.";
+
+      }
+
+    }
+
+
+
+    /* ==================================================
+       OPEN PDF
+
+       The PDF is displayed inside the page instead of
+       opening a new browser tab. This avoids popup
+       blockers, including when CONTINUE opens the next
+       incomplete item after asynchronous work.
+    ================================================== */
+
+    async function openPDF(index) {
+
+      const token = getToken();
+
+      if (!token) {
+        showToast("Please log in to access the PMP PDF.", "error");
+        return;
+      }
+
+      if (index < 0 || index >= pdfGuides.length) {
+        showToast("Invalid PDF.", "error");
+        return;
+      }
+
+      const pdf = pdfGuides[index];
+      const modal = document.getElementById("pdfModal");
+      const viewer = document.getElementById("pdfViewer");
+      const title = document.getElementById("pdfTitle");
+      const status = document.getElementById("pdfStatus");
+
+      title.textContent = `${pdf.number}. ${pdf.title}`;
+      status.textContent = "Preparing protected PDF...";
+
+      try {
+        const response = await fetch(
+          API_URL +
+          "/pmp/media-url?type=pdf&filename=" +
+          encodeURIComponent(pdf.filename),
+          {
+            method: "GET",
+            headers: {
+              Authorization: "Bearer " + token
+            },
+            cache: "no-store"
+          }
+        );
+
+        const data = await response.json().catch(() => ({}));
+
+        if (!response.ok || !data.success || !data.url) {
+          if (response.status === 401) {
+            logout();
+            return;
+          }
+
+          throw new Error(
+            data.message || "Could not prepare the protected PDF."
+          );
+        }
+
+        viewer.onload = async () => {
+          status.textContent = "PDF loaded successfully.";
+
+          if (!completedPDFs.includes(index)) {
+            const success = await savePDFCompletion(index);
+            status.textContent = success
+              ? "PDF opened and progress saved."
+              : "PDF opened. Progress could not be saved.";
+          }
+        };
+
+        viewer.onerror = () => {
+          status.textContent = "The PDF could not be loaded.";
+        };
+
+        viewer.src = data.url;
+        modal.classList.add("show");
+        modal.setAttribute("aria-hidden", "false");
+        document.body.classList.add("modal-open");
+      } catch (error) {
+        console.error("PDF access error:", error);
+        showToast(
+          "Unable to open this PDF. Please try again.",
+          "error"
+        );
+      }
+    }
+
+
+    function closePDF() {
+      const modal = document.getElementById("pdfModal");
+      const viewer = document.getElementById("pdfViewer");
+      viewer.onload = null;
+      viewer.onerror = null;
+      viewer.removeAttribute("src");
+      modal.classList.remove("show");
+      modal.setAttribute("aria-hidden", "true");
+      document.body.classList.remove("modal-open");
+    }
+
+
+    function toggleMobileMenu() {
+      const menu = document.getElementById("mobileNav");
+      const button = document.getElementById("mobileMenuBtn");
+      const open = menu.classList.toggle("show");
+      button.setAttribute("aria-expanded", String(open));
+      button.setAttribute("aria-label", open ? "Close navigation menu" : "Open navigation menu");
+    }
+
+
+    function closeMobileMenu() {
+      const menu = document.getElementById("mobileNav");
+      const button = document.getElementById("mobileMenuBtn");
+      menu.classList.remove("show");
+      button.setAttribute("aria-expanded", "false");
+      button.setAttribute("aria-label", "Open navigation menu");
+    }
+
+
+    /* ==================================================
+       FIND FIRST INCOMPLETE ITEM
+    ================================================== */
+
+    function getFirstIncompleteItem() {
+
+      /*
+        Training videos first.
+      */
+
+      for (
+        let i = 0;
+        i < lectures.length;
+        i++
+      ) {
+
+        if (
+          !completedVideos.includes(
+            i
+          )
+        ) {
+
+          return {
+            type: "video",
+            index: i
+          };
+
+        }
+
+      }
+
+
+      /*
+        Then PDFs.
+      */
+
+      for (
+        let i = 0;
+        i < pdfGuides.length;
+        i++
+      ) {
+
+        if (
+          !completedPDFs.includes(
+            i
+          )
+        ) {
+
+          return {
+            type: "pdf",
+            index: i
+          };
+
+        }
+
+      }
+
+
+      return null;
+
+    }
+
+
+
+    /* ==================================================
+       CONTINUE COURSE
+    ================================================== */
+
+    function continueCourse() {
+
+      if (
+        !courseAccessGranted
+      ) {
+
+        showToast(
+          "Please log in and get PMP course access first.",
+          "error"
+        );
+
+        return;
+
+      }
+
+
+      const nextItem =
+        getFirstIncompleteItem();
+
+
+      /*
+        Course fully completed.
+      */
+
+      if (!nextItem) {
+
+        showToast(
+          "Congratulations! You have completed all available PMP course items.",
+          "success"
+        );
+
+
+        const curriculumTab =
+          document.querySelector(
+            ".tab:nth-child(2)"
+          );
+
+
+        showTab(
+          "curriculum",
+          curriculumTab
+        );
+
+
+        setTimeout(() => {
+
+          document.getElementById(
+            "curriculum"
+          ).scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+          });
+
+        }, 50);
+
+
+        return;
+
+      }
+
+
+      /*
+        Always show curriculum first.
+      */
+
+      const curriculumTab =
+        document.querySelector(
+          ".tab:nth-child(2)"
+        );
+
+
+      showTab(
+        "curriculum",
+        curriculumTab
+      );
+
+
+      setTimeout(() => {
+
+        document.getElementById(
+          "curriculum"
+        ).scrollIntoView({
+          behavior: "smooth",
+          block: "start"
+        });
+
+
+        /*
+          Open the next incomplete item.
+        */
+
+        setTimeout(() => {
+
+          if (
+            nextItem.type ===
+            "video"
+          ) {
+
+            openLecture(
+              nextItem.index
+            );
+
+          }
+
+
+          if (
+            nextItem.type ===
+            "pdf"
+          ) {
+
+            openPDF(
+              nextItem.index
+            );
+
+          }
+
+        }, 450);
+
+
+      }, 50);
+
+    }
+
+
+
+    /* ==================================================
+       VIDEO MODAL BACKGROUND CLICK
+    ================================================== */
+
+    document
+      .getElementById(
+        "videoModal"
+      )
+      .addEventListener(
+        "click",
+        event => {
+
+          if (
+            event.target.id ===
+            "videoModal"
+          ) {
+
+            closeVideo();
+
+          }
+
+        }
+      );
+
+
+
+    /* ==================================================
+       ESC KEY
+    ================================================== */
+
+    document.addEventListener(
+      "keydown",
+      event => {
+
+        if (
+          event.key ===
+          "Escape"
+        ) {
+
+          closeVideo();
+
+          const pdfModal = document.getElementById("pdfModal");
+          if (pdfModal.classList.contains("show")) {
+            closePDF();
+          }
+
+        }
+
+      }
+    );
+
+
+
+    document
+      .getElementById("pdfModal")
+      .addEventListener("click", event => {
+        if (event.target.id === "pdfModal") {
+          closePDF();
+        }
+      });
+
+
+    /* ==================================================
+       INITIALIZE
+    ================================================== */
+
+    displayUser();
+
+
+    renderVideoLessons(
+      false
+    );
+
+
+    renderPDFLessons(
+      false
+    );
+
+
+    updateProgress();
+
+
+    checkCourseAccess();
+
+  </script>
+
+</body>
+
+</html>

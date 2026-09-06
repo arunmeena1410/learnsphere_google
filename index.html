@@ -1,0 +1,2081 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Learnsphere | Learn. Grow. Achieve.</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop stop-color='%23312e81'/%3E%3Cstop offset='.55' stop-color='%234f46e5'/%3E%3Cstop offset='1' stop-color='%238b5cf6'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='18' fill='url(%23g)'/%3E%3Ctext x='32' y='40' text-anchor='middle' font-family='Arial,sans-serif' font-size='24' font-weight='800' fill='white'%3ELS%3C/text%3E%3C/svg%3E" />
+
+  <!-- React -->
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap');
+
+    :root {
+      --primary: #4f46e5;
+      --primary-dark: #3730a3;
+      --accent: #f97316;
+      --dark: #101828;
+      --text: #344054;
+      --muted: #667085;
+      --light: #f7f8fc;
+      --border: #e4e7ec;
+      --white: #ffffff;
+      --success: #12b76a;
+      --danger: #d92d20;
+    }
+
+    * {
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Manrope", sans-serif;
+      color: var(--dark);
+      background: var(--white);
+    }
+
+    body.modal-open {
+      overflow: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    input,
+    select {
+      font: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    .container {
+      width: min(1180px, calc(100% - 40px));
+      margin: auto;
+    }
+
+    /* NAVBAR */
+
+    .navbar {
+      height: 78px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.97);
+      border-bottom: 1px solid #edf0f5;
+      backdrop-filter: blur(12px);
+    }
+
+    .nav-container {
+      width: min(1180px, calc(100% - 40px));
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      font-size: 22px;
+      letter-spacing: -1px;
+      white-space: nowrap;
+    }
+
+    .logo-icon {
+      width: 46px;
+      height: 46px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      border-radius: 14px;
+      color: #ffffff;
+      font-size: 14px;
+      font-weight: 800;
+      letter-spacing: 0.8px;
+      background: linear-gradient(135deg, #312e81, #4f46e5 55%, #8b5cf6);
+      box-shadow: 0 10px 24px rgba(79, 70, 229, 0.28);
+      position: relative;
+      overflow: hidden;
+      text-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
+    }
+
+    .logo-icon::before {
+      content: "";
+      position: absolute;
+      width: 58px;
+      height: 58px;
+      top: -36px;
+      right: -20px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.18);
+    }
+
+    .logo-icon::after {
+      content: "";
+      position: absolute;
+      width: 35px;
+      height: 2px;
+      bottom: 8px;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.22);
+      transform: rotate(-18deg);
+    }
+
+    .logo-text {
+      color: #101828;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+
+    .nav-links a {
+      font-size: 14px;
+      font-weight: 700;
+      color: #475467;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .login-btn {
+      border: none;
+      background: transparent;
+      font-weight: 700;
+      color: #344054;
+      padding: 10px;
+    }
+
+    .primary-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      padding: 14px 22px;
+      color: white;
+      border: none;
+      border-radius: 11px;
+      background: var(--primary);
+      font-weight: 800;
+      transition: 0.25s;
+    }
+
+    .primary-btn:hover {
+      transform: translateY(-2px);
+      background: var(--primary-dark);
+      box-shadow: 0 12px 25px rgba(79, 70, 229, 0.22);
+    }
+
+    .menu-btn {
+      display: none;
+      border: none;
+      background: transparent;
+      font-size: 25px;
+    }
+
+    /* HERO */
+
+    .hero {
+      min-height: 680px;
+      display: flex;
+      align-items: center;
+      padding: 80px 0;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 85% 15%, #ede9fe 0%, transparent 28%),
+        radial-gradient(circle at 15% 90%, #eef2ff 0%, transparent 25%),
+        #fafbff;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      align-items: center;
+      gap: 70px;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 13px;
+      border-radius: 50px;
+      color: var(--primary);
+      background: #eef2ff;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 1px;
+    }
+
+    .hero h1 {
+      margin: 20px 0;
+      max-width: 700px;
+      font-size: clamp(45px, 6vw, 72px);
+      line-height: 1.05;
+      letter-spacing: -3px;
+    }
+
+    .hero h1 span {
+      color: var(--primary);
+    }
+
+    .hero p {
+      max-width: 600px;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.8;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 13px;
+      margin-top: 30px;
+    }
+
+    .secondary-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 22px;
+      border: 1px solid var(--border);
+      border-radius: 11px;
+      background: white;
+      font-weight: 800;
+      color: #344054;
+      cursor: pointer;
+    }
+
+    .hero-students {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 35px;
+    }
+
+    .avatar-group {
+      display: flex;
+    }
+
+    .avatar {
+      width: 35px;
+      height: 35px;
+      margin-left: -7px;
+      display: grid;
+      place-items: center;
+      border: 3px solid white;
+      border-radius: 50%;
+      color: white;
+      font-size: 10px;
+      font-weight: 800;
+      background: linear-gradient(135deg, #6366f1, #ec4899);
+    }
+
+    .avatar:first-child {
+      margin-left: 0;
+    }
+
+    .hero-students small {
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    /* HERO VISUAL */
+
+    .hero-visual {
+      position: relative;
+      min-height: 500px;
+    }
+
+    .learning-card {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: min(100%, 410px);
+      padding: 26px;
+      border-radius: 26px;
+      background: white;
+      box-shadow: 0 30px 80px rgba(34, 37, 70, 0.15);
+    }
+
+    .course-preview {
+      height: 180px;
+      display: flex;
+      align-items: end;
+      padding: 20px;
+      border-radius: 18px;
+      color: white;
+      background: linear-gradient(135deg, #4f46e5, #8b5cf6);
+    }
+
+    .play-btn {
+      width: 48px;
+      height: 48px;
+      margin-bottom: 35px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: white;
+      color: var(--primary);
+      font-size: 20px;
+    }
+
+    .course-preview h3 {
+      margin: 0;
+      font-size: 22px;
+    }
+
+    .course-preview p {
+      margin: 6px 0 0;
+      color: #e0e7ff;
+      font-size: 12px;
+    }
+
+    .card-title {
+      margin: 22px 0 8px;
+      font-size: 19px;
+    }
+
+    .course-meta {
+      display: flex;
+      gap: 16px;
+      color: var(--muted);
+      font-size: 12px;
+      flex-wrap: wrap;
+    }
+
+    .progress-label {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 22px;
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .progress {
+      height: 9px;
+      margin-top: 8px;
+      overflow: hidden;
+      border-radius: 20px;
+      background: #edf0ff;
+    }
+
+    .progress-bar {
+      width: 72%;
+      height: 100%;
+      border-radius: 20px;
+      background: linear-gradient(90deg, var(--primary), #8b5cf6);
+    }
+
+    .floating-stat {
+      position: absolute;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 15px;
+      border-radius: 16px;
+      background: white;
+      box-shadow: 0 15px 40px rgba(34, 37, 70, 0.12);
+    }
+
+    .floating-stat strong {
+      display: block;
+      font-size: 15px;
+    }
+
+    .floating-stat small {
+      color: var(--muted);
+      font-size: 10px;
+    }
+
+    .stat-icon {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border-radius: 12px;
+      color: white;
+      background: var(--accent);
+    }
+
+    .stat-one {
+      left: 0;
+      top: 100px;
+    }
+
+    .stat-two {
+      right: -10px;
+      bottom: 50px;
+    }
+
+    .stat-two .stat-icon {
+      background: var(--success);
+    }
+
+    /* TRUST BAR */
+
+    .trust-bar {
+      padding: 30px 0;
+      border-top: 1px solid #edf0f5;
+      border-bottom: 1px solid #edf0f5;
+    }
+
+    .trust-grid {
+      display: grid;
+      grid-template-columns: 1.4fr repeat(4, 1fr);
+      align-items: center;
+      gap: 30px;
+    }
+
+    .trust-text {
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .brand-name {
+      text-align: center;
+      color: #98a2b3;
+      font-size: 18px;
+      font-weight: 800;
+    }
+
+    /* COMMON */
+
+    .section {
+      padding: 105px 0;
+    }
+
+    .section-light {
+      background: var(--light);
+    }
+
+    .section-heading {
+      max-width: 720px;
+      margin: 0 auto 55px;
+      text-align: center;
+    }
+
+    .eyebrow {
+      color: var(--primary);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 2px;
+    }
+
+    .section-heading h2 {
+      margin: 14px 0;
+      font-size: clamp(34px, 4vw, 50px);
+      line-height: 1.15;
+      letter-spacing: -2px;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    /* CATEGORIES */
+
+    .category-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 16px;
+    }
+
+    .category-card {
+      padding: 25px 20px;
+      text-align: center;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      background: white;
+      cursor: pointer;
+      transition: 0.25s;
+    }
+
+    .category-card:hover {
+      transform: translateY(-6px);
+      border-color: #c7d2fe;
+      box-shadow: 0 18px 40px rgba(79, 70, 229, 0.08);
+    }
+
+    .category-icon {
+      width: 55px;
+      height: 55px;
+      margin: 0 auto 15px;
+      display: grid;
+      place-items: center;
+      border-radius: 16px;
+      background: #eef2ff;
+      color: var(--primary);
+      font-size: 23px;
+    }
+
+    .category-card h3 {
+      margin: 0;
+      font-size: 14px;
+    }
+
+    .category-card p {
+      margin: 8px 0 0;
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    /* LEARNING OPTIONS */
+
+    .option-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .option-card {
+      padding: 32px 25px;
+      border-radius: 22px;
+      background: white;
+      border: 1px solid #edf0f5;
+    }
+
+    .option-number {
+      color: #c7d2fe;
+      font-size: 34px;
+      font-weight: 800;
+    }
+
+    .option-card h3 {
+      margin: 22px 0 12px;
+    }
+
+    .option-card p {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.8;
+    }
+
+    /* NUMBERS */
+
+    .numbers-section {
+      padding: 85px 0;
+      color: white;
+      background: var(--dark);
+    }
+
+    .numbers-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 25px;
+      text-align: center;
+    }
+
+    .number-card strong {
+      display: block;
+      color: #a5b4fc;
+      font-size: 42px;
+    }
+
+    .number-card span {
+      color: #cbd5e1;
+      font-size: 12px;
+    }
+
+    /* OFFERINGS */
+
+    .offer-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .offer-card {
+      padding: 30px;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      background: white;
+    }
+
+    .offer-card h3 {
+      margin: 20px 0 10px;
+    }
+
+    .offer-card p {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.8;
+    }
+
+    .offer-icon {
+      width: 52px;
+      height: 52px;
+      display: grid;
+      place-items: center;
+      border-radius: 15px;
+      color: white;
+      background: linear-gradient(135deg, var(--primary), #8b5cf6);
+      font-size: 21px;
+    }
+
+    /* COURSES */
+
+    .courses-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .course-card {
+      overflow: hidden;
+      border-radius: 20px;
+      background: white;
+      border: 1px solid var(--border);
+      transition: 0.25s;
+    }
+
+    .course-card:hover {
+      transform: translateY(-7px);
+      box-shadow: 0 20px 50px rgba(16, 24, 40, 0.1);
+    }
+
+    .course-image {
+      height: 145px;
+      padding: 15px;
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-end;
+      background: linear-gradient(135deg, #312e81, #7c3aed);
+    }
+
+    .course-image.orange {
+      background: linear-gradient(135deg, #ea580c, #f97316);
+    }
+
+    .course-image.green {
+      background: linear-gradient(135deg, #047857, #10b981);
+    }
+
+    .course-image.blue {
+      background: linear-gradient(135deg, #0369a1, #0ea5e9);
+    }
+
+    .course-badge {
+      padding: 6px 9px;
+      border-radius: 20px;
+      background: rgba(255,255,255,.18);
+      color: white;
+      font-size: 10px;
+      font-weight: 800;
+    }
+
+    .course-content {
+      padding: 20px;
+    }
+
+    .course-category {
+      color: var(--primary);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 1px;
+    }
+
+    .course-content h3 {
+      min-height: 48px;
+      margin: 9px 0;
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
+    .course-description {
+      min-height: 58px;
+      margin: 0 0 14px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.7;
+    }
+
+    .rating {
+      color: var(--accent);
+      font-size: 12px;
+    }
+
+    .students-count {
+      margin-left: 7px;
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    .course-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 18px;
+      padding-top: 15px;
+      border-top: 1px solid #edf0f5;
+    }
+
+    .course-footer strong {
+      color: var(--primary);
+    }
+
+    .view-all {
+      display: flex;
+      justify-content: center;
+      margin-top: 40px;
+    }
+
+    /* CTA */
+
+    .big-cta {
+      padding: 95px 0;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(139,92,246,.45), transparent 30%),
+        linear-gradient(135deg, #312e81, #4f46e5);
+      color: white;
+    }
+
+    .cta-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      align-items: center;
+      gap: 70px;
+    }
+
+    .big-cta h2 {
+      margin: 15px 0;
+      font-size: clamp(38px, 5vw, 60px);
+      line-height: 1.1;
+    }
+
+    .big-cta p {
+      color: #dbeafe;
+      line-height: 1.8;
+    }
+
+    .cta-card {
+      padding: 35px;
+      border-radius: 25px;
+      color: var(--dark);
+      background: white;
+    }
+
+    .cta-card h3 {
+      margin-top: 0;
+      font-size: 23px;
+    }
+
+    .form-group {
+      margin: 10px 0;
+    }
+
+    .cta-card input,
+    .cta-card select,
+    .modal-form input {
+      width: 100%;
+      padding: 14px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      outline: none;
+      background: white;
+    }
+
+    .cta-card input:focus,
+    .cta-card select:focus,
+    .modal-form input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+    }
+
+    .cta-card button {
+      width: 100%;
+      margin-top: 10px;
+    }
+
+    /* TESTIMONIALS */
+
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .testimonial-card {
+      padding: 28px;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      background: white;
+    }
+
+    .quote {
+      color: var(--primary);
+      font-size: 42px;
+      line-height: 1;
+    }
+
+    .testimonial-card p {
+      color: #475467;
+      line-height: 1.8;
+      font-size: 14px;
+    }
+
+    .student-info {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .student-avatar {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      color: white;
+      font-weight: 800;
+      background: var(--primary);
+    }
+
+    .student-info small {
+      display: block;
+      margin-top: 3px;
+      color: var(--muted);
+    }
+
+    /* FOOTER */
+
+    .footer {
+      padding: 70px 0 0;
+      color: white;
+      background: #0b1220;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      gap: 50px;
+      padding-bottom: 50px;
+    }
+
+    .footer .logo-text {
+      color: white;
+    }
+
+    .footer p {
+      color: #98a2b3;
+      font-size: 13px;
+      line-height: 1.8;
+    }
+
+    .footer h4 {
+      margin-top: 0;
+      font-size: 14px;
+    }
+
+    .footer a {
+      display: block;
+      margin: 12px 0;
+      color: #98a2b3;
+      font-size: 13px;
+    }
+
+    .footer a:hover {
+      color: white;
+    }
+
+    .footer .logo {
+      display: inline-flex;
+      margin-bottom: 12px;
+    }
+
+    .footer-bottom {
+      padding: 22px 0;
+      border-top: 1px solid #1d2939;
+      text-align: center;
+      color: #667085;
+      font-size: 12px;
+    }
+
+    /* MODAL */
+
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 5000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      background: rgba(16, 24, 40, 0.62);
+      backdrop-filter: blur(5px);
+    }
+
+    .login-modal {
+      width: min(100%, 450px);
+      position: relative;
+      padding: 36px;
+      border-radius: 24px;
+      background: white;
+      box-shadow: 0 30px 90px rgba(0, 0, 0, 0.25);
+    }
+
+    .close-modal {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      width: 38px;
+      height: 38px;
+      border: none;
+      border-radius: 50%;
+      background: #f2f4f7;
+      color: #344054;
+      font-size: 20px;
+    }
+
+    .modal-logo {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .modal-title {
+      text-align: center;
+      margin-bottom: 8px;
+    }
+
+    .modal-subtitle {
+      text-align: center;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.6;
+      margin-bottom: 25px;
+    }
+
+    .modal-tabs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px;
+      padding: 5px;
+      margin-bottom: 20px;
+      border-radius: 12px;
+      background: #f2f4f7;
+    }
+
+    .modal-tab {
+      padding: 10px;
+      border: none;
+      border-radius: 9px;
+      background: transparent;
+      font-weight: 800;
+      color: var(--muted);
+    }
+
+    .modal-tab.active {
+      background: white;
+      color: var(--primary);
+      box-shadow: 0 2px 8px rgba(16, 24, 40, 0.08);
+    }
+
+    .field-label {
+      display: block;
+      margin: 14px 0 7px;
+      font-size: 12px;
+      font-weight: 800;
+      color: #344054;
+    }
+
+    .modal-form .primary-btn {
+      width: 100%;
+      margin-top: 20px;
+    }
+
+    .form-message {
+      min-height: 20px;
+      margin-top: 14px;
+      text-align: center;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .form-message.success {
+      color: var(--success);
+    }
+
+    .form-message.error {
+      color: var(--danger);
+    }
+
+    .small-note {
+      margin-top: 15px;
+      color: var(--muted);
+      text-align: center;
+      font-size: 10px;
+      line-height: 1.6;
+    }
+
+    .user-pill {
+      padding: 9px 13px;
+      border-radius: 10px;
+      color: var(--primary);
+      background: #eef2ff;
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    /* RESPONSIVE */
+
+    @media (max-width: 1000px) {
+      .hero-grid,
+      .cta-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-content {
+        text-align: center;
+      }
+
+      .hero-content p {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .hero-actions,
+      .hero-students {
+        justify-content: center;
+      }
+
+      .hero-visual {
+        max-width: 600px;
+        width: 100%;
+        margin: auto;
+      }
+
+      .category-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .option-grid,
+      .courses-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .numbers-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .offer-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 760px) {
+      .nav-links,
+      .nav-actions {
+        display: none;
+      }
+
+      .menu-btn {
+        display: block;
+      }
+
+      .nav-links.mobile-open {
+        position: absolute;
+        top: 78px;
+        left: 0;
+        right: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+        padding: 25px;
+        background: white;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .trust-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .trust-text {
+        grid-column: 1 / -1;
+        text-align: center;
+      }
+
+      .testimonial-grid,
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .container,
+      .nav-container {
+        width: min(100% - 28px, 1180px);
+      }
+
+      .hero {
+        padding: 60px 0;
+      }
+
+      .hero h1 {
+        font-size: 45px;
+      }
+
+      .hero-visual {
+        min-height: 430px;
+      }
+
+      .learning-card {
+        right: 0;
+      }
+
+      .stat-one {
+        left: -5px;
+        top: 0;
+      }
+
+      .stat-two {
+        right: -5px;
+      }
+
+      .category-grid,
+      .option-grid,
+      .courses-grid,
+      .numbers-grid,
+      .offer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .section {
+        padding: 75px 0;
+      }
+
+      .login-modal {
+        padding: 28px 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div id="root"></div>
+
+  <script type="text/babel">
+    const { useState, useEffect } = React;
+
+    const API_URL =
+      window.LEARNSPHERE_API_URL ||
+      ((window.location.hostname === "localhost" ||
+        window.location.hostname === "127.0.0.1")
+        ? "http://localhost:5000/api"
+        : `${window.location.origin}/api`);
+
+    function App() {
+      const [menuOpen, setMenuOpen] = useState(false);
+      const [loginOpen, setLoginOpen] = useState(false);
+      const [authMode, setAuthMode] = useState("login");
+      const [user, setUser] = useState(null);
+      const [authMessage, setAuthMessage] = useState("");
+      const [authMessageType, setAuthMessageType] = useState("");
+      const [authLoading, setAuthLoading] = useState(false);
+      const [enquiryMessage, setEnquiryMessage] = useState("");
+      const [enquiryLoading, setEnquiryLoading] = useState(false);
+
+      useEffect(() => {
+  const savedUser = localStorage.getItem("learnsphereUser");
+  const token = localStorage.getItem("learnsphereToken");
+
+  if (!savedUser || !token) {
+    localStorage.removeItem("learnsphereUser");
+    localStorage.removeItem("learnsphereToken");
+    return;
+  }
+
+  try {
+    const parsedUser = JSON.parse(savedUser);
+    if (parsedUser && parsedUser.identifier) {
+      setUser(parsedUser);
+    } else {
+      throw new Error("Invalid saved user data");
+    }
+  } catch (error) {
+    console.warn("Clearing invalid saved login data.");
+    localStorage.removeItem("learnsphereUser");
+    localStorage.removeItem("learnsphereToken");
+  }
+}, []);
+
+      useEffect(() => {
+        document.body.classList.toggle("modal-open", loginOpen);
+        return () => document.body.classList.remove("modal-open");
+      }, [loginOpen]);
+
+      const categories = [
+        { icon: "💻", title: "Technology", count: "120+ Courses" },
+        { icon: "☁️", title: "Cloud & DevOps", count: "80+ Courses" },
+        { icon: "🛡️", title: "Cyber Security", count: "65+ Courses" },
+        { icon: "📊", title: "Business", count: "90+ Courses" },
+        { icon: "🎯", title: "Project Management", count: "50+ Courses" }
+      ];
+
+      const learningOptions = [
+        { number: "01", title: "Live Online Classes", description: "Learn directly from expert instructors through interactive online sessions." },
+        { number: "02", title: "Classroom Training", description: "Experience structured, instructor-led learning in a collaborative environment." },
+        { number: "03", title: "Self-Paced Learning", description: "Learn at your own speed with flexible content, recordings and practical exercises." },
+        { number: "04", title: "Corporate Training", description: "Upskill your team with customized training designed around your business needs." }
+      ];
+
+      const offerings = [
+        { icon: "👨‍🏫", title: "1-on-1 Mentorship", description: "Get personalized guidance and schedule sessions around your availability." },
+        { icon: "⚙️", title: "Customized Learning", description: "Build a learning path focused on the skills and topics that matter to you." },
+        { icon: "💙", title: "Learning Support", description: "Our learner-first approach helps you stay confident throughout your journey." },
+        { icon: "🌍", title: "Global Learning", description: "Access flexible learning experiences from wherever you are." },
+        { icon: "🚀", title: "Career-Focused Skills", description: "Learn practical skills designed to help you move toward your career goals." },
+        { icon: "📜", title: "Course Certificates", description: "Celebrate your progress and showcase your completed learning journey." }
+      ];
+
+      const courses = [
+        {
+          badge: "BESTSELLER",
+          category: "PROJECT MANAGEMENT",
+          title: "PMP® Certification Training",
+          description: "Build the project management knowledge and practical exam readiness needed to prepare for the PMP® certification journey, including predictive, agile and hybrid approaches.",
+          students: "2,400+ Learners",
+          price: "$299",
+          className: ""
+        },
+        {
+          badge: "POPULAR",
+          category: "PROJECT MANAGEMENT",
+          title: "CAPM® Certification Training",
+          description: "Develop a strong foundation in project management principles, processes and terminology for an entry-level project management certification path.",
+          students: "1,850+ Learners",
+          price: "$229",
+          className: "orange"
+        },
+        {
+          badge: "TRENDING",
+          category: "AGILE",
+          title: "Certified ScrumMaster® Training",
+          description: "Learn Scrum roles, events and artifacts while developing practical skills for supporting agile teams and effective product delivery.",
+          students: "1,600+ Learners",
+          price: "$249",
+          className: "green"
+        },
+        {
+          badge: "POPULAR",
+          category: "PROJECT MANAGEMENT",
+          title: "PRINCE2® Foundation Training",
+          description: "Understand a structured project management method with clear principles, practices and processes for managing projects effectively.",
+          students: "2,100+ Learners",
+          price: "$239",
+          className: "blue"
+        }
+      ];
+
+      const testimonials = [
+        { quote: "The course structure was clear, practical and easy to follow. It helped me gain confidence and prepare for my next career step.", name: "Arjun Sharma", role: "Cloud Engineer", initials: "AS" },
+        { quote: "The instructors explained complex topics in a simple way. The hands-on learning experience made a real difference.", name: "Priya Mehta", role: "Cyber Security Analyst", initials: "PM" },
+        { quote: "I was able to learn alongside my job because of the flexible learning options. The platform made everything convenient.", name: "Rahul Verma", role: "IT Professional", initials: "RV" }
+      ];
+
+      function openAuth(mode = "login") {
+        setAuthMode(mode);
+        setAuthMessage("");
+        setAuthMessageType("");
+        setLoginOpen(true);
+      }
+
+      function closeAuth() {
+        setLoginOpen(false);
+        setAuthMessage("");
+      }
+
+      async function handleAuthSubmit(event) {
+        event.preventDefault();
+        setAuthLoading(true);
+        setAuthMessage("");
+
+        const formData = new FormData(event.target);
+
+        const identifier = formData.get("identifier")?.trim();
+        const password = formData.get("password");
+        const confirmPassword = formData.get("confirmPassword");
+
+        if (authMode === "register" && password !== confirmPassword) {
+          setAuthMessage("Passwords do not match.");
+          setAuthMessageType("error");
+          setAuthLoading(false);
+          return;
+        }
+
+        try {
+          const endpoint = authMode === "login" ? "/login" : "/register";
+
+          const response = await fetch(API_URL + endpoint, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+              identifier,
+              password
+            })
+          });
+
+          const data = await response.json().catch(() => ({}));
+
+          if (!response.ok) {
+            throw new Error(data.message || "Something went wrong.");
+          }
+
+          const loggedInUser = {
+  identifier: data.user.identifier,
+  role: data.user.role,
+  courseAccess: data.user.courseAccess
+};
+
+// Save user information
+localStorage.setItem(
+  "learnsphereUser",
+  JSON.stringify(loggedInUser)
+);
+
+// Save JWT authentication token
+if (data.token) {
+  localStorage.setItem("learnsphereToken", data.token);
+}
+
+setUser(loggedInUser);
+
+          setAuthMessage(data.message);
+          setAuthMessageType("success");
+
+          setTimeout(() => {
+            closeAuth();
+          }, 900);
+
+        } catch (error) {
+          setAuthMessage(error.message);
+          setAuthMessageType("error");
+        } finally {
+          setAuthLoading(false);
+        }
+      }
+
+      async function handleEnquirySubmit(event) {
+        event.preventDefault();
+        setEnquiryLoading(true);
+        setEnquiryMessage("");
+
+        const formData = new FormData(event.target);
+
+        const payload = {
+          name: formData.get("name")?.trim(),
+          email: formData.get("email")?.trim(),
+          mobile: formData.get("mobile")?.trim(),
+          interest: formData.get("interest")
+        };
+
+        try {
+          const response = await fetch(API_URL + "/enquiry", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify(payload)
+          });
+
+          const data = await response.json().catch(() => ({}));
+
+          if (!response.ok) {
+            throw new Error(data.message || "Could not send enquiry.");
+          }
+
+          setEnquiryMessage("Thank you! Your enquiry has been sent successfully.");
+          event.target.reset();
+
+        } catch (error) {
+          setEnquiryMessage(
+            error.message || "Server is unavailable. Please try again."
+          );
+        } finally {
+          setEnquiryLoading(false);
+        }
+      }
+
+      function logout() {
+  localStorage.removeItem("learnsphereUser");
+  localStorage.removeItem("learnsphereToken");
+  setUser(null);
+}
+
+      function closeMenu() {
+        setMenuOpen(false);
+      }
+
+      return (
+        <>
+          <header className="navbar">   
+            <div className="nav-container">
+
+              <a href="#home" className="logo">
+                <div className="logo-icon">LS</div>
+                <span className="logo-text">Learnsphere</span>
+              </a>
+
+              <nav className={`nav-links ${menuOpen ? "mobile-open" : ""}`}>
+                <a href="#home" onClick={closeMenu}>Home</a>
+                <a href="courses.html" onClick={closeMenu}>Courses</a>
+                <a href="#learning" onClick={closeMenu}>Learning Options</a>
+                <a href="#about" onClick={closeMenu}>About</a>
+                <a href="#enquiry" onClick={closeMenu}>Enquiry</a>
+                <a href="#contact" onClick={closeMenu}>Contact</a>
+              </nav>
+
+             <div className="nav-actions">
+  {user ? (
+    <>
+      <span className="user-pill">
+        {user.identifier.length > 18
+          ? user.identifier.slice(0, 18) + "..."
+          : user.identifier}
+      </span>
+
+      {user.role === "admin" && (
+        <a
+          href="admin.html"
+          className="login-btn"
+          style={{
+            textDecoration: "none",
+            display: "inline-flex",
+            alignItems: "center",
+            justifyContent: "center"
+          }}
+        >
+          Admin Dashboard
+        </a>
+      )}
+
+      <button className="login-btn" onClick={logout}>
+        Log Out
+      </button>
+    </>
+  ) : (
+                  <button
+                    className="login-btn"
+                    onClick={() => openAuth("login")}
+                  >
+                    Log In
+                  </button>
+                )}
+
+                <a href="courses.html" className="primary-btn">
+                  Start Learning
+                </a>
+              </div>
+
+              <button
+                className="menu-btn"
+                onClick={() => setMenuOpen(!menuOpen)}
+              >
+                {menuOpen ? "✕" : "☰"}
+              </button>
+
+            </div>
+          </header>
+
+          <section className="hero" id="home">
+            <div className="container hero-grid">
+
+              <div className="hero-content">
+                <div className="tag">✦ FUTURE-READY LEARNING</div>
+
+                <h1>
+                  Learn Skills.
+                  <span> Build Your Future.</span>
+                </h1>
+
+                <p>
+                  Learnsphere brings expert-led courses, flexible learning
+                  options and practical skill development together in one
+                  powerful learning experience.
+                </p>
+
+                <div className="hero-actions">
+                  <a href="courses.html" className="primary-btn">
+                    Explore Courses →
+                  </a>
+
+                  <a href="#learning" className="secondary-btn">
+                    How It Works
+                  </a>
+                </div>
+
+                <div className="hero-students">
+                  <div className="avatar-group">
+                    <div className="avatar">A</div>
+                    <div className="avatar">P</div>
+                    <div className="avatar">R</div>
+                    <div className="avatar">S</div>
+                  </div>
+
+                  <small>
+                    Join <b>10,000+</b> learners building their future
+                  </small>
+                </div>
+              </div>
+
+              <div className="hero-visual">
+                <div className="learning-card">
+                  <div className="course-preview">
+                    <div>
+                      <div className="play-btn">▶</div>
+                      <h3>Learn Without Limits</h3>
+                      <p>Expert-led learning for modern careers</p>
+                    </div>
+                  </div>
+
+                  <h3 className="card-title">Your Learning Journey</h3>
+
+                  <div className="course-meta">
+                    <span>📚 12 Lessons</span>
+                    <span>⏱ 18 Hours</span>
+                    <span>🏆 Certificate</span>
+                  </div>
+
+                  <div className="progress-label">
+                    <span>Course Progress</span>
+                    <span>72%</span>
+                  </div>
+
+                  <div className="progress">
+                    <div className="progress-bar"></div>
+                  </div>
+                </div>
+
+                <div className="floating-stat stat-one">
+                  <div className="stat-icon">★</div>
+                  <div>
+                    <strong>4.9/5 Rating</strong>
+                    <small>Learner Satisfaction</small>
+                  </div>
+                </div>
+
+                <div className="floating-stat stat-two">
+                  <div className="stat-icon">✓</div>
+                  <div>
+                    <strong>50,000+ Lessons</strong>
+                    <small>Across All Programs</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section className="trust-bar">
+            <div className="container trust-grid">
+              <div className="trust-text">
+                Learn skills trusted by ambitious professionals
+              </div>
+              <div className="brand-name">AWS</div>
+              <div className="brand-name">Microsoft</div>
+              <div className="brand-name">Google</div>
+              <div className="brand-name">CompTIA</div>
+            </div>
+          </section>
+
+          <section className="section" id="courses">
+            <div className="container">
+              <div className="section-heading">
+                <div className="eyebrow">EXPLORE COURSES</div>
+                <h2>
+                  Find the skills that move
+                  <br />
+                  <span style={{color: "var(--primary)"}}>
+                    your career forward.
+                  </span>
+                </h2>
+                <p>
+                  Explore professional learning paths designed for today's
+                  technology and business landscape.
+                </p>
+              </div>
+
+              <div className="category-grid">
+                {categories.map((category) => (
+                  <div className="category-card" key={category.title}>
+                    <div className="category-icon">{category.icon}</div>
+                    <h3>{category.title}</h3>
+                    <p>{category.count}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          <section className="section section-light" id="learning">
+            <div className="container">
+              <div className="section-heading">
+                <div className="eyebrow">LEARNING OPTIONS</div>
+                <h2>Learn your way, on your schedule.</h2>
+                <p>
+                  Choose the learning format that fits your goals,
+                  availability and preferred learning style.
+                </p>
+              </div>
+
+              <div className="option-grid">
+                {learningOptions.map((option) => (
+                  <div className="option-card" key={option.title}>
+                    <div className="option-number">{option.number}</div>
+                    <h3>{option.title}</h3>
+                    <p>{option.description}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          <section className="numbers-section">
+            <div className="container numbers-grid">
+              <div className="number-card">
+                <strong>8+</strong>
+                <span>Years of Learning Excellence</span>
+              </div>
+              <div className="number-card">
+                <strong>10K+</strong>
+                <span>Students Trained</span>
+              </div>
+              <div className="number-card">
+                <strong>95%</strong>
+                <span>On-Time Course Completion</span>
+              </div>
+              <div className="number-card">
+                <strong>100+</strong>
+                <span>Expert Trainers</span>
+              </div>
+              <div className="number-card">
+                <strong>250+</strong>
+                <span>Courses to Explore</span>
+              </div>
+            </div>
+          </section>
+
+          <section className="section" id="about">
+            <div className="container">
+              <div className="section-heading">
+                <div className="eyebrow">THE LEARNSPHERE EXPERIENCE</div>
+                <h2>More than courses. A complete learning journey.</h2>
+                <p>
+                  Designed to give every learner flexibility, guidance and
+                  practical opportunities to keep moving forward.
+                </p>
+              </div>
+
+              <div className="offer-grid">
+                {offerings.map((offer) => (
+                  <div className="offer-card" key={offer.title}>
+                    <div className="offer-icon">{offer.icon}</div>
+                    <h3>{offer.title}</h3>
+                    <p>{offer.description}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          <section className="section section-light">
+            <div className="container">
+              <div className="section-heading">
+                <div className="eyebrow">POPULAR COURSES</div>
+                <h2>Start learning something amazing today.</h2>
+                <p>
+                  Discover some of the most popular learning paths chosen by
+                  professionals and career-focused learners.
+                </p>
+              </div>
+
+              <div className="courses-grid">
+                {courses.map((course) => (
+                  <div className="course-card" key={course.title}>
+                    <div className={`course-image ${course.className}`}>
+                      <span className="course-badge">{course.badge}</span>
+                    </div>
+
+                    <div className="course-content">
+                      <div className="course-category">
+                        {course.category}
+                      </div>
+
+                      <h3>{course.title}</h3>
+
+                      <p className="course-description">
+                        {course.description}
+                      </p>
+
+                      <div>
+                        <span className="rating">★★★★★</span>
+                        <span className="students-count">
+                          {course.students}
+                        </span>
+                      </div>
+
+                      <div className="course-footer">
+                        <span>Full Course</span>
+                        <strong>{course.price}</strong>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <div className="view-all">
+                <a href="courses.html" className="primary-btn">
+                  View All Courses →
+                </a>
+              </div>
+            </div>
+          </section>
+
+          <section className="big-cta" id="enquiry">
+            <div className="container cta-grid">
+
+              <div>
+                <div className="eyebrow" style={{color: "#c7d2fe"}}>
+                  YOUR NEXT SKILL STARTS HERE
+                </div>
+
+                <h2>
+                  Pick a course that
+                  <br />
+                  makes your future brighter.
+                </h2>
+
+                <p>
+                  Explore fresh learning opportunities, develop practical
+                  knowledge and take the next step toward your personal or
+                  professional goals.
+                </p>
+
+                <a href="courses.html" className="secondary-btn">
+                  Explore All Courses
+                </a>
+              </div>
+
+              <form
+                className="cta-card"
+                onSubmit={handleEnquirySubmit}
+              >
+                <h3>Start Your Learning Journey</h3>
+
+                <p style={{color: "var(--muted)", fontSize: "13px"}}>
+                  Tell us what you want to learn and we'll help you choose
+                  the right path.
+                </p>
+
+                <div className="form-group">
+                  <input
+                    name="name"
+                    type="text"
+                    placeholder="Your Name"
+                    required
+                  />
+                </div>
+
+                <div className="form-group">
+                  <input
+                    name="email"
+                    type="email"
+                    placeholder="Email Address"
+                    required
+                  />
+                </div>
+
+                <div className="form-group">
+                  <input
+                    name="mobile"
+                    type="tel"
+                    placeholder="Mobile Number"
+                    required
+                  />
+                </div>
+
+                <div className="form-group">
+                  <select name="interest" required defaultValue="">
+                    <option value="" disabled>
+                      Choose your interest
+                    </option>
+                    <option>Technology</option>
+                    <option>Cloud & DevOps</option>
+                    <option>Cyber Security</option>
+                    <option>Business</option>
+                    <option>Project Management</option>
+                  </select>
+                </div>
+
+                <button
+                  type="submit"
+                  className="primary-btn"
+                  disabled={enquiryLoading}
+                >
+                  {enquiryLoading ? "Sending..." : "Get Started →"}
+                </button>
+
+                {enquiryMessage && (
+                  <div
+                    className="form-message success"
+                    style={{color: enquiryMessage.includes("Thank") ? "#12b76a" : "#d92d20"}}
+                  >
+                    {enquiryMessage}
+                  </div>
+                )}
+              </form>
+
+            </div>
+          </section>
+
+          <section className="section">
+            <div className="container">
+              <div className="section-heading">
+                <div className="eyebrow">WHAT LEARNERS SAY</div>
+                <h2>Real stories. Real learning progress.</h2>
+              </div>
+
+              <div className="testimonial-grid">
+                {testimonials.map((testimonial) => (
+                  <div
+                    className="testimonial-card"
+                    key={testimonial.name}
+                  >
+                    <div className="quote">“</div>
+
+                    <p>{testimonial.quote}</p>
+
+                    <div className="student-info">
+                      <div className="student-avatar">
+                        {testimonial.initials}
+                      </div>
+
+                      <div>
+                        <strong>{testimonial.name}</strong>
+                        <small>{testimonial.role}</small>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          <footer className="footer" id="contact">
+            <div className="container footer-grid">
+
+              <div>
+                <a href="#home" className="logo">
+                  <div className="logo-icon">LS</div>
+                  <span className="logo-text">Learnsphere</span>
+                </a>
+
+                <p>
+                  A modern learning platform helping people develop skills,
+                  gain knowledge and move confidently toward their goals.
+                </p>
+              </div>
+
+              <div>
+                <h4>Explore</h4>
+                <a href="#courses">All Courses</a>
+                <a href="#courses">Popular Courses</a>
+                <a href="#learning">Learning Options</a>
+                <a href="#about">Why Learnsphere</a>
+              </div>
+
+              <div>
+                <h4>Company</h4>
+                <a href="#about">About Us</a>
+                <a href="#about">Our Trainers</a>
+                <a href="#contact">Contact</a>
+                <a href="#contact">Support</a>
+              </div>
+
+              <div>
+                <h4>Contact</h4>
+                <p>indra.kahar1@gmail.com</p>
+                <p>+91 6266741667</p>
+                <p>India</p>
+              </div>
+            </div>
+
+            <div className="footer-bottom">
+              © 2026 Learnsphere. All rights reserved.
+            </div>
+          </footer>
+
+          {/* LOGIN / REGISTER MODAL */}
+          {loginOpen && (
+            <div
+              className="modal-overlay"
+              onClick={closeAuth}
+            >
+              <div
+                className="login-modal"
+                onClick={(event) => event.stopPropagation()}
+              >
+                <button
+                  className="close-modal"
+                  onClick={closeAuth}
+                  aria-label="Close"
+                >
+                  ×
+                </button>
+
+                <div className="modal-logo">
+                  <div className="logo">
+                    <div className="logo-icon">LS</div>
+                    <span className="logo-text">Learnsphere</span>
+                  </div>
+                </div>
+
+                <h2 className="modal-title">
+                  {authMode === "login"
+                    ? "Welcome back"
+                    : "Create your account"}
+                </h2>
+
+                <p className="modal-subtitle">
+                  {authMode === "login"
+                    ? "Log in using your email address or mobile number."
+                    : "Register using your email address or mobile number."}
+                </p>
+
+                <div className="modal-tabs">
+                  <button
+                    className={`modal-tab ${authMode === "login" ? "active" : ""}`}
+                    onClick={() => {
+                      setAuthMode("login");
+                      setAuthMessage("");
+                    }}
+                  >
+                    Log In
+                  </button>
+
+                  <button
+                    className={`modal-tab ${authMode === "register" ? "active" : ""}`}
+                    onClick={() => {
+                      setAuthMode("register");
+                      setAuthMessage("");
+                    }}
+                  >
+                    Register
+                  </button>
+                </div>
+
+                <form
+                  className="modal-form"
+                  onSubmit={handleAuthSubmit}
+                >
+                  <label className="field-label">
+                    Email Address or Mobile Number
+                  </label>
+
+                  <input
+                    name="identifier"
+                    type="text"
+                    placeholder="you@example.com or 9876543210"
+                    required
+                  />
+
+                  <label className="field-label">
+                    Password
+                  </label>
+
+                  <input
+                    name="password"
+                    type="password"
+                    placeholder="Enter your password"
+                    minLength="8"
+                    required
+                  />
+
+                  {authMode === "register" && (
+                    <>
+                      <label className="field-label">
+                        Confirm Password
+                      </label>
+
+                      <input
+                        name="confirmPassword"
+                        type="password"
+                        placeholder="Confirm your password"
+                        minLength="8"
+                        required
+                      />
+                    </>
+                  )}
+
+                  <button
+                    type="submit"
+                    className="primary-btn"
+                    disabled={authLoading}
+                  >
+                    {authLoading
+                      ? "Please wait..."
+                      : authMode === "login"
+                        ? "Log In →"
+                        : "Create Account →"}
+                  </button>
+
+                  {authMessage && (
+                    <div
+                      className={`form-message ${authMessageType}`}
+                    >
+                      {authMessage}
+                    </div>
+                  )}
+
+                  <div className="small-note">
+                    Your password is securely processed by the backend and
+                    is never sent by email.
+                  </div>
+                </form>
+              </div>
+            </div>
+          )}
+        </>
+      );
+    }
+
+    const root = ReactDOM.createRoot(
+      document.getElementById("root")
+    );
+
+    root.render(<App />);
+  </script>
+</body>
+</html>

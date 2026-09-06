@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Learnsphere | All Courses</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop stop-color='%23312e81'/%3E%3Cstop offset='.55' stop-color='%234f46e5'/%3E%3Cstop offset='1' stop-color='%238b5cf6'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='18' fill='url(%23g)'/%3E%3Ctext x='32' y='40' text-anchor='middle' font-family='Arial,sans-serif' font-size='24' font-weight='800' fill='white'%3ELS%3C/text%3E%3C/svg%3E" />
+  <style>
+    :root{
+      --primary:#4f46e5; --dark:#111827; --muted:#64748b; --line:#e5e7eb;
+      --light:#f8fafc; --white:#fff; --success:#059669;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:Inter,Arial,sans-serif;background:var(--light);color:var(--dark)}
+    a{text-decoration:none;color:inherit}
+    .navbar{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.96);border-bottom:1px solid var(--line);backdrop-filter:blur(12px)}
+    .nav-container{width:min(1180px,92%);margin:auto;height:76px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+    .logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:21px}
+    .logo-icon{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;background:linear-gradient(135deg,#312e81,#4f46e5,#8b5cf6);color:#fff;font-weight:900}
+    .nav-links{display:flex;gap:24px;align-items:center;color:#475569;font-size:14px;font-weight:600}
+    .nav-links a:hover,.nav-links a.active{color:var(--primary)}
+    .home-btn{padding:11px 17px;background:var(--primary);color:#fff;border-radius:10px;font-weight:700;font-size:14px}
+    .hero{background:linear-gradient(135deg,#312e81,#4f46e5 58%,#7c3aed);color:#fff;padding:58px 0 64px}
+    .container{width:min(1180px,92%);margin:auto}
+    .breadcrumb{font-size:13px;color:#c7d2fe;margin-bottom:16px}
+    .hero h1{font-size:clamp(34px,5vw,56px);margin-bottom:14px}
+    .hero p{max-width:650px;color:#e0e7ff;line-height:1.7}
+    .page{padding:42px 0 70px}
+    .layout{display:grid;grid-template-columns:270px 1fr;gap:28px;align-items:start}
+    .filters{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px;position:sticky;top:100px}
+    .filters h3{font-size:18px;margin-bottom:18px}
+    .filter-group{padding:18px 0;border-top:1px solid var(--line)}
+    .filter-group:first-of-type{border-top:0;padding-top:0}
+    .filter-group h4{font-size:14px;margin-bottom:12px}
+    .check{display:flex;gap:9px;align-items:center;margin:10px 0;color:#64748b;font-size:14px;cursor:pointer}
+    .check input{accent-color:var(--primary)}
+    .clear{width:100%;padding:10px;border:1px solid #c7d2fe;background:#eef2ff;color:#4338ca;border-radius:9px;font-weight:700;cursor:pointer}
+    .topbar{display:flex;justify-content:space-between;gap:16px;align-items:center;margin-bottom:22px}
+    .search{flex:1;position:relative}
+    .search input{width:100%;padding:14px 16px;border:1px solid var(--line);border-radius:11px;outline:none;background:#fff}
+    .search input:focus{border-color:#818cf8;box-shadow:0 0 0 3px #eef2ff}
+    .sort{padding:13px 14px;border:1px solid var(--line);border-radius:11px;background:#fff;color:#475569}
+    .result-info{color:#64748b;font-size:14px;margin-bottom:20px}
+    .courses-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+    .course{background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden;transition:transform .25s ease,box-shadow .25s ease}
+    .course:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(15,23,42,.08)}
+    .course.pmp-clickable{cursor:pointer}
+    .course.pmp-clickable:focus-visible{outline:3px solid #818cf8;outline-offset:3px}
+    .course.pmp-clickable .view{pointer-events:auto}
+    .course-top{height:118px;padding:16px;display:flex;align-items:flex-start;justify-content:space-between;color:#fff}
+    .pmi{background:linear-gradient(135deg,#312e81,#6366f1)}
+    .cloud{background:linear-gradient(135deg,#075985,#0284c7)}
+    .security{background:linear-gradient(135deg,#064e3b,#10b981)}
+    .agile{background:linear-gradient(135deg,#9a3412,#f97316)}
+    .it{background:linear-gradient(135deg,#4c1d95,#8b5cf6)}
+    .data{background:linear-gradient(135deg,#7f1d1d,#ef4444)}
+    .badge{font-size:10px;font-weight:800;padding:6px 9px;border-radius:999px;background:rgba(255,255,255,.18);backdrop-filter:blur(5px)}
+    .course-body{padding:18px}
+    .category{font-size:11px;font-weight:800;letter-spacing:.08em;color:var(--primary);margin-bottom:8px}
+    .course h3{font-size:17px;line-height:1.45;margin-bottom:10px;min-height:49px}
+    .desc{font-size:13px;line-height:1.65;color:var(--muted);min-height:84px}
+    .meta{display:flex;justify-content:space-between;gap:10px;margin:16px 0;color:#64748b;font-size:12px}
+    .rating{color:#f59e0b;letter-spacing:1px}
+    .footer{display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--line);padding-top:14px}
+    .price{font-weight:800;font-size:18px}
+    .view{padding:9px 12px;border-radius:9px;background:#eef2ff;color:#4338ca;font-size:12px;font-weight:800}
+    .empty{display:none;background:#fff;border:1px dashed #cbd5e1;border-radius:16px;padding:45px;text-align:center;color:#64748b}
+    .pagination{display:flex;justify-content:center;gap:8px;margin-top:32px}
+    .pagination button{border:1px solid var(--line);background:#fff;width:38px;height:38px;border-radius:9px;cursor:pointer}
+    .pagination button.active{background:var(--primary);color:#fff;border-color:var(--primary)}
+    .mobile-filter{display:none}
+    @media(max-width:1000px){.courses-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.nav-links{gap:15px}}
+    @media(max-width:760px){
+      .nav-container{height:auto;padding:13px 0;flex-wrap:wrap}
+      .nav-links{order:3;width:100%;justify-content:center;flex-wrap:wrap;padding-top:8px}
+      .layout{grid-template-columns:1fr}.filters{display:none;position:static}
+      .filters.show{display:block}.mobile-filter{display:block;margin-bottom:12px}
+      .mobile-filter button{width:100%;padding:12px;border:1px solid #c7d2fe;background:#eef2ff;color:#4338ca;border-radius:10px;font-weight:800}
+      .topbar{flex-direction:column;align-items:stretch}.sort{width:100%}
+    }
+    @media(max-width:560px){.courses-grid{grid-template-columns:1fr}.home-btn{padding:9px 12px}.logo{font-size:19px}.hero{padding:44px 0}.desc{min-height:auto}}
+  </style>
+</head>
+<body>
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="logo">
+        <div class="logo-icon">LS</div><span>Learnsphere</span>
+      </a>
+      <nav class="nav-links">
+        <a href="index.html#home">Home</a>
+        <a class="active" href="courses.html">Courses</a>
+        <a href="index.html#learning">Learning Options</a>
+        <a href="index.html#about">About</a>
+        <a href="index.html#enquiry">Enquiry</a>
+        <a href="index.html#contact">Contact</a>
+      </nav>
+      <a class="home-btn" href="index.html">Back to Home</a>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <div class="breadcrumb">Home / Courses</div>
+      <h1>Explore All Courses</h1>
+      <p>Discover professional learning paths in project management, cloud, cybersecurity, agile methods, IT and data. Search, filter and find the course that fits your next career goal.</p>
+    </div>
+  </section>
+
+  <main class="page">
+    <div class="container">
+      <button class="mobile-filter" onclick="document.querySelector('.filters').classList.toggle('show')">☰ Show / Hide Filters</button>
+      <div class="layout">
+        <aside class="filters">
+          <h3>Filter Courses</h3>
+          <div class="filter-group">
+            <h4>Category</h4>
+            <label class="check"><input type="checkbox" value="PMI" class="filter-category"> Project Management</label>
+            <label class="check"><input type="checkbox" value="Cloud" class="filter-category"> Cloud & AWS</label>
+            <label class="check"><input type="checkbox" value="Security" class="filter-category"> Cybersecurity</label>
+            <label class="check"><input type="checkbox" value="Agile" class="filter-category"> Agile & Scrum</label>
+            <label class="check"><input type="checkbox" value="IT" class="filter-category"> IT Certifications</label>
+            <label class="check"><input type="checkbox" value="Data" class="filter-category"> Data & Analytics</label>
+          </div>
+          <div class="filter-group">
+            <h4>Level</h4>
+            <label class="check"><input type="checkbox" value="Beginner" class="filter-level"> Beginner</label>
+            <label class="check"><input type="checkbox" value="Intermediate" class="filter-level"> Intermediate</label>
+            <label class="check"><input type="checkbox" value="Advanced" class="filter-level"> Advanced</label>
+          </div>
+          <div class="filter-group">
+            <h4>Price</h4>
+            <label class="check"><input type="checkbox" value="Under 250" class="filter-price"> Under $250</label>
+            <label class="check"><input type="checkbox" value="250 Plus" class="filter-price"> $250 and above</label>
+          </div>
+          <button class="clear" id="clearFilters">Clear All Filters</button>
+        </aside>
+
+        <section>
+          <div class="topbar">
+            <div class="search"><input id="searchInput" placeholder="Search courses, certifications or skills..." /></div>
+            <select class="sort" id="sortSelect">
+              <option value="default">Sort by: Featured</option>
+              <option value="name">Name: A to Z</option>
+              <option value="priceLow">Price: Low to High</option>
+              <option value="priceHigh">Price: High to Low</option>
+              <option value="rating">Highest Rated</option>
+            </select>
+          </div>
+          <div class="result-info" id="resultInfo">Showing all courses</div>
+          <div class="courses-grid" id="coursesGrid"></div>
+          <div class="empty" id="emptyState"><h3>No courses found</h3><p>Try changing your search or filters.</p></div>
+          <div class="pagination"><button class="active">1</button><button>2</button><button>3</button></div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    const courses = [
+      {title:"PMP® Certification Training",category:"PMI",level:"Advanced",price:299,rating:4.9,students:"2,400+ learners",badge:"BESTSELLER",theme:"pmi",desc:"Prepare for the PMP® certification journey with predictive, agile and hybrid project management approaches."},
+      {title:"CAPM® Certification Training",category:"PMI",level:"Beginner",price:229,rating:4.8,students:"1,850+ learners",badge:"POPULAR",theme:"pmi",desc:"Build a strong foundation in project management principles, terminology and professional practices."},
+      {title:"AWS Certified Solutions Architect",category:"Cloud",level:"Intermediate",price:279,rating:4.9,students:"3,100+ learners",badge:"TRENDING",theme:"cloud",desc:"Learn core AWS services, architecture concepts, security and cloud solution design."},
+      {title:"CompTIA Security+ Training",category:"Security",level:"Intermediate",price:259,rating:4.8,students:"2,700+ learners",badge:"POPULAR",theme:"security",desc:"Develop essential cybersecurity knowledge covering threats, security operations and risk management."},
+      {title:"Certified ScrumMaster® Training",category:"Agile",level:"Beginner",price:249,rating:4.8,students:"1,600+ learners",badge:"FEATURED",theme:"agile",desc:"Learn Scrum roles, events, artifacts and practical techniques for effective agile teams."},
+      {title:"PRINCE2® Foundation Training",category:"PMI",level:"Beginner",price:239,rating:4.7,students:"2,100+ learners",badge:"POPULAR",theme:"pmi",desc:"Understand a structured project management method with principles, practices and processes."},
+      {title:"CompTIA A+ Certification Training",category:"IT",level:"Beginner",price:219,rating:4.7,students:"3,500+ learners",badge:"START HERE",theme:"it",desc:"Build practical IT support skills across hardware, operating systems, networking and troubleshooting."},
+      {title:"CompTIA Network+ Training",category:"IT",level:"Intermediate",price:269,rating:4.8,students:"2,900+ learners",badge:"POPULAR",theme:"it",desc:"Develop networking skills including connectivity, operations, security and troubleshooting."},
+      {title:"Certified Ethical Hacker Basics",category:"Security",level:"Advanced",price:319,rating:4.6,students:"1,300+ learners",badge:"ADVANCED",theme:"security",desc:"Explore ethical hacking concepts, security testing methodology and common defensive practices."},
+      {title:"AWS Cloud Practitioner Training",category:"Cloud",level:"Beginner",price:199,rating:4.7,students:"2,200+ learners",badge:"BEGINNER",theme:"cloud",desc:"Start your cloud learning journey with AWS fundamentals, pricing, security and core services."},
+      {title:"Power BI Data Analytics",category:"Data",level:"Intermediate",price:239,rating:4.8,students:"1,900+ learners",badge:"TRENDING",theme:"data",desc:"Learn to prepare data, build reports and create interactive dashboards for business decisions."},
+      {title:"Agile Project Management",category:"Agile",level:"Intermediate",price:229,rating:4.7,students:"1,450+ learners",badge:"FEATURED",theme:"agile",desc:"Apply agile planning, iterative delivery and collaboration techniques to modern projects."}
+    ];
+
+    const grid = document.getElementById("coursesGrid");
+    const resultInfo = document.getElementById("resultInfo");
+    const searchInput = document.getElementById("searchInput");
+    const sortSelect = document.getElementById("sortSelect");
+    const emptyState = document.getElementById("emptyState");
+
+    function stars(rating){ return "★★★★★"; }
+
+    function getFilteredCourses(){
+      const query = searchInput.value.toLowerCase().trim();
+      const categories = [...document.querySelectorAll(".filter-category:checked")].map(x=>x.value);
+      const levels = [...document.querySelectorAll(".filter-level:checked")].map(x=>x.value);
+      const prices = [...document.querySelectorAll(".filter-price:checked")].map(x=>x.value);
+
+      let list = courses.filter(c => {
+        const searchMatch = !query || (c.title+" "+c.category+" "+c.desc).toLowerCase().includes(query);
+        const categoryMatch = !categories.length || categories.includes(c.category);
+        const levelMatch = !levels.length || levels.includes(c.level);
+        const priceGroup = c.price < 250 ? "Under 250" : "250 Plus";
+        const priceMatch = !prices.length || prices.includes(priceGroup);
+        return searchMatch && categoryMatch && levelMatch && priceMatch;
+      });
+
+      if(sortSelect.value==="name") list.sort((a,b)=>a.title.localeCompare(b.title));
+      if(sortSelect.value==="priceLow") list.sort((a,b)=>a.price-b.price);
+      if(sortSelect.value==="priceHigh") list.sort((a,b)=>b.price-a.price);
+      if(sortSelect.value==="rating") list.sort((a,b)=>b.rating-a.rating);
+      return list;
+    }
+
+    function renderCourses(){
+  const list = getFilteredCourses();
+
+  grid.innerHTML = list.map(c => {
+
+    const isPmp =
+      c.title === "PMP® Certification Training";
+
+    const courseLink =
+      isPmp ? "pmp-details.html" : "index.html#enquiry";
+
+    return `
+      <article
+        class="course${isPmp ? " pmp-clickable" : ""}"
+        ${isPmp ? 'data-course-url="pmp-details.html" role="link" tabindex="0" aria-label="Open PMP Certification Training course"' : ""}
+      >
+
+        <div class="course-top ${c.theme}">
+          <span class="badge">${c.badge}</span>
+          <span>${c.level}</span>
+        </div>
+
+        <div class="course-body">
+
+          <div class="category">
+            ${c.category}
+          </div>
+
+          <h3>
+            <a
+              href="${courseLink}"
+              style="text-decoration:none;color:inherit;"
+            >
+              ${c.title}
+            </a>
+          </h3>
+
+          <p class="desc">
+            ${c.desc}
+          </p>
+
+          <div class="meta">
+            <span>
+              <span class="rating">
+                ${stars(c.rating)}
+              </span>
+              ${c.rating}
+            </span>
+
+            <span>
+              ${c.students}
+            </span>
+          </div>
+
+          <div class="footer">
+
+            <span class="price">
+              $${c.price}
+            </span>
+
+            ${
+              isPmp
+              ? `
+                <a
+                  href="pmp-details.html"
+                  class="view"
+                >
+                  View Course
+                </a>
+              `
+              : `
+                <a
+                  href="index.html#enquiry"
+                  class="view"
+                >
+                  Enquire Now
+                </a>
+              `
+            }
+
+          </div>
+
+        </div>
+
+      </article>
+    `;
+
+  }).join("");
+
+  resultInfo.textContent =
+    `${list.length} course${list.length !== 1 ? "s" : ""} found`;
+
+  emptyState.style.display =
+    list.length ? "none" : "block";
+}
+
+    searchInput.addEventListener("input", renderCourses);
+    sortSelect.addEventListener("change", renderCourses);
+    document.querySelectorAll(".filters input").forEach(input => input.addEventListener("change", renderCourses));
+    document.getElementById("clearFilters").addEventListener("click", () => {
+      document.querySelectorAll(".filters input").forEach(input => input.checked=false);
+      searchInput.value=""; sortSelect.value="default"; renderCourses();
+    });
+
+    // The entire PMP course card is clickable, not only its title or
+    // "View Course" button. Keyboard users can also open it with Enter/Space.
+    grid.addEventListener("click", (event) => {
+      const card = event.target.closest(".pmp-clickable");
+      if (!card) return;
+
+      // Existing links/buttons keep their normal navigation behavior.
+      if (event.target.closest("a, button, input, select, textarea")) return;
+
+      const url = card.dataset.courseUrl;
+      if (url) window.location.href = url;
+    });
+
+    grid.addEventListener("keydown", (event) => {
+      const card = event.target.closest(".pmp-clickable");
+      if (!card) return;
+      if (event.target.closest("a, button, input, select, textarea")) return;
+
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        const url = card.dataset.courseUrl;
+        if (url) window.location.href = url;
+      }
+    });
+
+    renderCourses();
+  </script>
+</body>
+</html>
