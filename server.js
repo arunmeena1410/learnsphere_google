@@ -2738,24 +2738,15 @@ function validateIdentifier(
 // EMAIL TRANSPORTER
 // ==================================================
 
-const transporter =
-  nodemailer.createTransport({
-
-    service: "gmail",
-
-    pool: true,
-    maxConnections: 3,
-    maxMessages: 100,
-    connectionTimeout: 10_000,
-    greetingTimeout: 10_000,
-    socketTimeout: 60_000,
-
-    auth: {
-      user: process.env.EMAIL_USER,
-      pass: process.env.EMAIL_PASS
-    }
-
-  });
+const transporter = nodemailer.createTransport({
+  host: "smtp.hostinger.com",
+  port: 465,
+  secure: true,
+  auth: {
+    user: process.env.EMAIL_USER,
+    pass: process.env.EMAIL_PASS
+  }
+});
 
 
 // ==================================================
@@ -3160,50 +3151,6 @@ app.post(
         createToken(
           user
         );
-
-
-      void sendNotificationEmail({
-
-        subject:
-          "Learnsphere User Login",
-
-        html: `
-
-          <div
-            style="
-              font-family:Arial,sans-serif;
-              line-height:1.6
-            "
-          >
-
-            <h2>
-              Learnsphere User Login
-            </h2>
-
-            <p>
-              A user successfully logged in.
-            </p>
-
-            <p>
-              <strong>Email / Mobile:</strong>
-              ${escapeHtml(
-                cleanIdentifier
-              )}
-            </p>
-
-            <p>
-              <strong>Time:</strong>
-              ${escapeHtml(
-                new Date().toLocaleString()
-              )}
-            </p>
-
-          </div>
-
-        `
-
-      });
-
 
       return res.json({
 

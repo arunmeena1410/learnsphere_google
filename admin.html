@@ -13,6 +13,12 @@
       padding: 0;
     }
 
+    html, body {
+      overflow-x: hidden;
+      width: 100%;
+      max-width: 100vw;
+    }
+
     body {
       font-family: Arial, sans-serif;
       background: #f5f7fb;
@@ -35,23 +41,56 @@
       display: flex;
       align-items: center;
       gap: 10px;
+      font-weight: 800;
       font-size: 22px;
-      font-weight: bold;
-      color: #111827;
+      letter-spacing: -1px;
+      white-space: nowrap;
     }
 
-    .logo-box {
-      width: 40px;
-      height: 40px;
-      background: #2563eb;
-      color: white;
+    .logo-icon {
+      width: 46px;
+      height: 46px;
       display: flex;
       align-items: center;
       justify-content: center;
-      border-radius: 8px;
-      font-weight: bold;
+      flex-shrink: 0;
+      border-radius: 14px;
+      color: #ffffff;
+      font-size: 14px;
+      font-weight: 800;
+      letter-spacing: 0.8px;
+      background: linear-gradient(135deg, #312e81, #4f46e5 55%, #8b5cf6);
+      box-shadow: 0 10px 24px rgba(79, 70, 229, 0.28);
+      position: relative;
+      overflow: hidden;
+      text-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
     }
 
+    .logo-icon::before {
+      content: "";
+      position: absolute;
+      width: 58px;
+      height: 58px;
+      top: -36px;
+      right: -20px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.18);
+    }
+
+    .logo-icon::after {
+      content: "";
+      position: absolute;
+      width: 35px;
+      height: 2px;
+      bottom: 8px;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.22);
+      transform: rotate(-18deg);
+    }
+
+    .logo-text {
+      color: #101828;
+    }
     .logout-btn {
       border: none;
       background: #ef4444;
@@ -175,6 +214,7 @@
     .table-wrapper {
       width: 100%;
       overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
     }
 
     table {
@@ -373,6 +413,7 @@
 
       .navbar {
         height: 62px;
+        padding: 0 16px;
       }
 
       .logo {
@@ -407,6 +448,20 @@
 
       .delete-btn {
         margin-left: 18px;
+      }
+    }
+
+    @media (max-width: 380px) {
+      .navbar {
+        padding: 0 12px;
+      }
+
+      .logo span {
+        font-size: 16px;
+      }
+
+      .page-title {
+        font-size: 22px;
       }
     }
   </style>
