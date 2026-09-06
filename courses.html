@@ -4,10 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Learnsphere | All Courses</title>
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop stop-color='%23312e81'/%3E%3Cstop offset='.55' stop-color='%234f46e5'/%3E%3Cstop offset='1' stop-color='%238b5cf6'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='18' fill='url(%23g)'/%3E%3Ctext x='32' y='40' text-anchor='middle' font-family='Arial,sans-serif' font-size='24' font-weight='800' fill='white'%3ELS%3C/text%3E%3C/svg%3E" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop stop-color='%230b1d3a'/%3E%3Cstop offset='.55' stop-color='%230056d2'/%3E%3Cstop offset='1' stop-color='%2338bdf8'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='18' fill='url(%23g)'/%3E%3Ctext x='32' y='40' text-anchor='middle' font-family='Arial,sans-serif' font-size='24' font-weight='800' fill='white'%3ELS%3C/text%3E%3C/svg%3E" />
   <style>
     :root{
-      --primary:#4f46e5; --dark:#111827; --muted:#64748b; --line:#e5e7eb;
+      --primary:#0056d2; --dark:#070f1e; --muted:#64748b; --line:#e2e8f0;
       --light:#f8fafc; --white:#fff; --success:#059669;
     }
     *{box-sizing:border-box;margin:0;padding:0}
@@ -39,8 +39,8 @@
       font-size: 14px;
       font-weight: 800;
       letter-spacing: 0.8px;
-      background: linear-gradient(135deg, #312e81, #4f46e5 55%, #8b5cf6);
-      box-shadow: 0 10px 24px rgba(79, 70, 229, 0.28);
+      background: linear-gradient(135deg, #0b1d3a, #0056d2 55%, #38bdf8);
+      box-shadow: 0 10px 24px rgba(0, 86, 210, 0.28);
       position: relative;
       overflow: hidden;
       text-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
@@ -75,15 +75,15 @@
     .nav-links a:hover,.nav-links a.active{color:var(--primary)}
     .nav-actions{display:flex;align-items:center;gap:10px}
     .home-btn{padding:10px 16px;background:var(--primary);color:#fff;border-radius:10px;font-weight:700;font-size:14px;display:inline-flex;align-items:center;white-space:nowrap;transition:background .2s}
-    .home-btn:hover{background:#4338ca}
+    .home-btn:hover{background:#0041a8}
     .mobile-menu-btn{display:none;width:42px;height:42px;border:1px solid var(--line);border-radius:10px;background:#fff;font-size:20px;color:var(--dark);cursor:pointer;align-items:center;justify-content:center}
     .mobile-nav{display:none;position:absolute;top:76px;left:0;right:0;background:rgba(255,255,255,.98);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);box-shadow:0 15px 30px rgba(0,0,0,.08);padding:15px 24px 22px;flex-direction:column;gap:12px}
     .mobile-nav.show{display:flex}
     .mobile-nav a{font-size:15px;font-weight:600;color:#475569;padding:6px 0;border-bottom:1px solid #f1f5f9}
     .mobile-nav a.active{color:var(--primary)}
-    .hero{background:linear-gradient(135deg,#312e81,#4f46e5 58%,#7c3aed);color:#fff;padding:58px 0 64px}
+    .hero{background:radial-gradient(circle at 15% 20%, rgba(0, 86, 210, 0.25), transparent 35%), radial-gradient(circle at 85% 75%, rgba(56, 189, 248, 0.15), transparent 35%), linear-gradient(135deg,#070f1e 0%,#0b1d3a 55%,#0d2852 100%);color:#fff;padding:58px 0 64px}
     .container{width:min(1180px,92%);margin:auto}
-    .breadcrumb{font-size:13px;color:#c7d2fe;margin-bottom:16px}
+    .breadcrumb{font-size:13px;color:#93c5fd;margin-bottom:16px}
     .hero h1{font-size:clamp(30px,5vw,54px);margin-bottom:14px;line-height:1.2}
     .hero p{max-width:650px;color:#e0e7ff;line-height:1.7}
     .page{padding:42px 0 70px}
@@ -95,26 +95,27 @@
     .filter-group h4{font-size:14px;margin-bottom:12px}
     .check{display:flex;gap:9px;align-items:center;margin:10px 0;color:#64748b;font-size:14px;cursor:pointer}
     .check input{accent-color:var(--primary)}
-    .clear{width:100%;padding:10px;border:1px solid #c7d2fe;background:#eef2ff;color:#4338ca;border-radius:9px;font-weight:700;cursor:pointer}
+    .clear{width:100%;padding:10px;border:1px solid #bfdbfe;background:#ebf3ff;color:#0056d2;border-radius:9px;font-weight:700;cursor:pointer;transition:background .2s}
+    .clear:hover{background:#dbeafe}
     .topbar{display:flex;justify-content:space-between;gap:16px;align-items:center;margin-bottom:22px}
     .search{flex:1;position:relative}
-    .search input{width:100%;padding:14px 16px;border:1px solid var(--line);border-radius:11px;outline:none;background:#fff;font-size:14px}
-    .search input:focus{border-color:#818cf8;box-shadow:0 0 0 3px #eef2ff}
+    .search input{width:100%;padding:14px 16px;border:1px solid var(--line);border-radius:11px;outline:none;background:#fff;font-size:14px;transition:border-color .2s,box-shadow .2s}
+    .search input:focus{border-color:#0056d2;box-shadow:0 0 0 3px rgba(0, 86, 210, 0.12)}
     .sort{padding:13px 14px;border:1px solid var(--line);border-radius:11px;background:#fff;color:#475569;font-size:14px}
     .result-info{color:#64748b;font-size:14px;margin-bottom:20px}
     .courses-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
     .course{background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden;transition:transform .25s ease,box-shadow .25s ease}
     .course:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(15,23,42,.08)}
     .course.pmp-clickable{cursor:pointer}
-    .course.pmp-clickable:focus-visible{outline:3px solid #818cf8;outline-offset:3px}
+    .course.pmp-clickable:focus-visible{outline:3px solid #0056d2;outline-offset:3px}
     .course.pmp-clickable .view{pointer-events:auto}
     .course-top{height:118px;padding:16px;display:flex;align-items:flex-start;justify-content:space-between;color:#fff}
-    .pmi{background:linear-gradient(135deg,#312e81,#6366f1)}
-    .cloud{background:linear-gradient(135deg,#075985,#0284c7)}
-    .security{background:linear-gradient(135deg,#064e3b,#10b981)}
-    .agile{background:linear-gradient(135deg,#9a3412,#f97316)}
-    .it{background:linear-gradient(135deg,#4c1d95,#8b5cf6)}
-    .data{background:linear-gradient(135deg,#7f1d1d,#ef4444)}
+    .pmi{background:linear-gradient(135deg,#070f1e 0%,#0b1d3a 50%,#0056d2 100%)}
+    .cloud{background:linear-gradient(135deg,#082f49 0%,#0284c7 60%,#38bdf8 100%)}
+    .security{background:linear-gradient(135deg,#064e3b 0%,#047857 60%,#059669 100%)}
+    .agile{background:linear-gradient(135deg,#7c2d12 0%,#c2410c 60%,#ea580c 100%)}
+    .it{background:linear-gradient(135deg,#3b0764 0%,#6b21a8 60%,#a855f7 100%)}
+    .data{background:linear-gradient(135deg,#881337 0%,#be123c 60%,#f43f5e 100%)}
     .badge{font-size:10px;font-weight:800;padding:6px 9px;border-radius:999px;background:rgba(255,255,255,.18);backdrop-filter:blur(5px)}
     .course-body{padding:18px}
     .category{font-size:11px;font-weight:800;letter-spacing:.08em;color:var(--primary);margin-bottom:8px}
@@ -123,13 +124,15 @@
     .meta{display:flex;justify-content:space-between;gap:10px;margin:16px 0;color:#64748b;font-size:12px}
     .rating{color:#f59e0b;letter-spacing:1px}
     .footer{display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--line);padding-top:14px}
-    .price{font-weight:800;font-size:18px}
-    .view{padding:9px 12px;border-radius:9px;background:#eef2ff;color:#4338ca;font-size:12px;font-weight:800}
+    .price{font-weight:800;font-size:18px;color:#0f172a}
+    .view{padding:9px 12px;border-radius:9px;background:#ebf3ff;color:#0056d2;font-size:12px;font-weight:800;transition:background .2s,color .2s}
+    .view:hover{background:#0056d2;color:#ffffff}
     .empty{display:none;background:#fff;border:1px dashed #cbd5e1;border-radius:16px;padding:45px;text-align:center;color:#64748b}
     .pagination{display:flex;justify-content:center;gap:8px;margin-top:32px}
-    .pagination button{border:1px solid var(--line);background:#fff;width:38px;height:38px;border-radius:9px;cursor:pointer}
+    .pagination button{border:1px solid var(--line);background:#fff;width:38px;height:38px;border-radius:9px;cursor:pointer;font-weight:700;color:#475569;transition:all .2s}
+    .pagination button:hover:not(.active){background:#f1f5f9;color:#0f172a}
     .pagination button.active{background:var(--primary);color:#fff;border-color:var(--primary)}
-    .mobile-filter{display:none;width:100%;padding:13px 16px;border:1px solid #c7d2fe;background:#eef2ff;color:#4338ca;border-radius:12px;font-weight:800;font-size:14px;cursor:pointer;text-align:center;margin-bottom:16px;align-items:center;justify-content:center;gap:8px}
+    .mobile-filter{display:none;width:100%;padding:13px 16px;border:1px solid #bfdbfe;background:#ebf3ff;color:#0056d2;border-radius:12px;font-weight:800;font-size:14px;cursor:pointer;text-align:center;margin-bottom:16px;align-items:center;justify-content:center;gap:8px}
     @media(max-width:1024px){.courses-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.nav-links{gap:15px}}
     @media(max-width:768px){
       .nav-links{display:none}
@@ -160,7 +163,7 @@
   <header class="navbar">
     <div class="nav-container">
       <a href="index.html" class="logo">
-        <div class="logo-icon">LS</div><span>Learnsphere</span>
+        <div class="logo-icon">LS</div><span class="logo-text">Learnsphere</span>
       </a>
       <nav class="nav-links">
         <a href="index.html#home">Home</a>

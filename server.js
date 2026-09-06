@@ -3688,11 +3688,11 @@ app.use((req, res, next) => {
   <style>
     body { font-family: system-ui, -apple-system, sans-serif; display: flex; align-items: center; justify-content: center; min-height: 100vh; margin: 0; background: #0f172a; color: #f8fafc; text-align: center; }
     .box { max-width: 480px; padding: 32px; }
-    h1 { font-size: 5rem; margin: 0; color: #6366f1; font-weight: 800; }
+    h1 { font-size: 5rem; margin: 0; color: #38bdf8; font-weight: 800; }
     h2 { margin: 8px 0 16px; font-size: 1.5rem; }
     p { color: #94a3b8; font-size: 1.05rem; line-height: 1.6; margin-bottom: 24px; }
-    a { display: inline-block; padding: 12px 28px; background: #4f46e5; color: white; text-decoration: none; border-radius: 8px; font-weight: 600; transition: background .2s ease; }
-    a:hover { background: #4338ca; }
+    a { display: inline-block; padding: 12px 28px; background: #0056d2; color: white; text-decoration: none; border-radius: 8px; font-weight: 600; transition: background .2s ease; }
+    a:hover { background: #0041a8; }
   </style>
 </head>
 <body>

@@ -5,8 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>Learnsphere Admin</title>
+  <link rel="icon" type="image/svg+xml"
+    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop stop-color='%230b1d3a'/%3E%3Cstop offset='.55' stop-color='%230056d2'/%3E%3Cstop offset='1' stop-color='%2338bdf8'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='18' fill='url(%23g)'/%3E%3Ctext x='32' y='40' text-anchor='middle' font-family='Arial,sans-serif' font-size='24' font-weight='800' fill='white'%3ELS%3C/text%3E%3C/svg%3E" />
 
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap');
+
     * {
       box-sizing: border-box;
       margin: 0;
@@ -20,31 +24,33 @@
     }
 
     body {
-      font-family: Arial, sans-serif;
-      background: #f5f7fb;
-      color: #1f2937;
+      font-family: "Manrope", Arial, sans-serif;
+      background: #f8fafc;
+      color: #0f172a;
     }
 
     /* ================= NAVBAR ================= */
 
     .navbar {
       background: #ffffff;
-      height: 70px;
+      height: 78px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       padding: 0 40px;
-      border-bottom: 1px solid #e5e7eb;
+      border-bottom: 1px solid #edf0f5;
     }
 
     .logo {
       display: flex;
       align-items: center;
       gap: 10px;
+      font-family: "Manrope", sans-serif;
       font-weight: 800;
       font-size: 22px;
       letter-spacing: -1px;
       white-space: nowrap;
+      text-decoration: none;
     }
 
     .logo-icon {
@@ -59,8 +65,8 @@
       font-size: 14px;
       font-weight: 800;
       letter-spacing: 0.8px;
-      background: linear-gradient(135deg, #312e81, #4f46e5 55%, #8b5cf6);
-      box-shadow: 0 10px 24px rgba(79, 70, 229, 0.28);
+      background: linear-gradient(135deg, #0b1d3a, #0056d2 55%, #38bdf8);
+      box-shadow: 0 10px 24px rgba(0, 86, 210, 0.28);
       position: relative;
       overflow: hidden;
       text-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
@@ -92,17 +98,21 @@
       color: #101828;
     }
     .logout-btn {
-      border: none;
-      background: #ef4444;
-      color: white;
+      border: 1px solid #fee2e2;
+      background: #fef2f2;
+      color: #dc2626;
       padding: 10px 18px;
-      border-radius: 6px;
+      border-radius: 9px;
       cursor: pointer;
       font-size: 14px;
+      font-weight: 700;
+      transition: all 0.2s ease;
     }
 
     .logout-btn:hover {
       background: #dc2626;
+      color: #ffffff;
+      border-color: #dc2626;
     }
 
     /* ================= CONTAINER ================= */
@@ -134,34 +144,40 @@
 
     .stat-card {
       background: white;
-      padding: 22px;
-      border-radius: 10px;
-      border: 1px solid #e5e7eb;
+      padding: 24px;
+      border-radius: 14px;
+      border: 1px solid #e2e8f0;
+      box-shadow: 0 4px 20px rgba(15, 23, 42, 0.04);
     }
 
     .stat-title {
-      color: #6b7280;
-      font-size: 14px;
+      color: #64748b;
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
       margin-bottom: 8px;
     }
 
     .stat-value {
-      font-size: 28px;
-      font-weight: bold;
+      font-size: 32px;
+      font-weight: 800;
+      color: #0f172a;
     }
 
     /* ================= USER MANAGEMENT ================= */
 
     .users-section {
       background: white;
-      border-radius: 10px;
-      border: 1px solid #e5e7eb;
+      border-radius: 14px;
+      border: 1px solid #e2e8f0;
+      box-shadow: 0 4px 20px rgba(15, 23, 42, 0.04);
       overflow: hidden;
     }
 
     .section-header {
-      padding: 22px;
-      border-bottom: 1px solid #e5e7eb;
+      padding: 22px 24px;
+      border-bottom: 1px solid #e2e8f0;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -170,8 +186,9 @@
     }
 
     .section-title {
-      font-size: 21px;
-      font-weight: bold;
+      font-size: 20px;
+      font-weight: 800;
+      color: #0f172a;
     }
 
     /* ================= SEARCH BAR ================= */
@@ -185,28 +202,35 @@
     .search-input {
       width: 280px;
       padding: 11px 14px;
-      border: 1px solid #d1d5db;
-      border-radius: 7px;
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
       outline: none;
       font-size: 14px;
+      background: #f8fafc;
+      transition: border-color 0.2s, box-shadow 0.2s;
     }
 
     .search-input:focus {
-      border-color: #2563eb;
-      box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.1);
+      background: #ffffff;
+      border-color: #0056d2;
+      box-shadow: 0 0 0 3px rgba(0, 86, 210, 0.12);
     }
 
     .clear-search {
-      border: 1px solid #d1d5db;
-      background: white;
+      border: 1px solid #e2e8f0;
+      background: #f8fafc;
+      color: #475569;
       padding: 10px 14px;
-      border-radius: 7px;
+      border-radius: 10px;
       cursor: pointer;
       font-size: 14px;
+      font-weight: 600;
+      transition: background 0.2s;
     }
 
     .clear-search:hover {
-      background: #f3f4f6;
+      background: #e2e8f0;
+      color: #0f172a;
     }
 
     /* ================= TABLE ================= */
@@ -226,14 +250,18 @@
     td {
       padding: 16px 20px;
       text-align: left;
-      border-bottom: 1px solid #e5e7eb;
+      border-bottom: 1px solid #f1f5f9;
       font-size: 14px;
     }
 
     th {
-      background: #f9fafb;
-      font-weight: bold;
-      color: #374151;
+      background: #f8fafc;
+      font-weight: 700;
+      color: #475569;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      border-bottom: 1px solid #e2e8f0;
     }
 
     tr:last-child td {
@@ -244,30 +272,34 @@
 
     .badge {
       display: inline-block;
-      padding: 6px 10px;
+      padding: 5px 11px;
       border-radius: 20px;
       font-size: 12px;
-      font-weight: bold;
+      font-weight: 700;
     }
 
     .badge-yes {
-      background: #dcfce7;
-      color: #166534;
+      background: #ecfdf5;
+      color: #047857;
+      border: 1px solid #a7f3d0;
     }
 
     .badge-no {
-      background: #fee2e2;
-      color: #991b1b;
+      background: #fef2f2;
+      color: #b91c1c;
+      border: 1px solid #fecaca;
     }
 
     .badge-admin {
-      background: #dbeafe;
-      color: #1e40af;
+      background: #ebf3ff;
+      color: #0056d2;
+      border: 1px solid #bfdbfe;
     }
 
     .badge-user {
-      background: #f3f4f6;
-      color: #374151;
+      background: #f1f5f9;
+      color: #475569;
+      border: 1px solid #e2e8f0;
     }
 
     /* ================= ACTION BUTTONS ================= */
@@ -282,29 +314,32 @@
     .grant-btn,
     .revoke-btn {
       border: none;
-      padding: 8px 12px;
-      border-radius: 6px;
+      padding: 8px 14px;
+      border-radius: 8px;
       cursor: pointer;
       font-size: 13px;
-      font-weight: 500;
+      font-weight: 700;
+      transition: background 0.2s ease, box-shadow 0.2s ease;
     }
 
     .grant-btn {
-      background: #16a34a;
+      background: #059669;
       color: white;
+      box-shadow: 0 2px 8px rgba(5, 150, 105, 0.2);
     }
 
     .grant-btn:hover {
-      background: #15803d;
+      background: #047857;
     }
 
     .revoke-btn {
-      background: #f59e0b;
+      background: #d97706;
       color: white;
+      box-shadow: 0 2px 8px rgba(217, 119, 6, 0.2);
     }
 
     .revoke-btn:hover {
-      background: #d97706;
+      background: #b45309;
     }
 
     /*
@@ -318,12 +353,13 @@
       background: #dc2626;
       color: white;
       border: none;
-      padding: 6px 9px;
-      border-radius: 5px;
+      padding: 7px 11px;
+      border-radius: 8px;
       cursor: pointer;
-      font-size: 11px;
-      font-weight: 500;
+      font-size: 12px;
+      font-weight: 700;
       margin-left: 22px;
+      transition: background 0.2s ease;
     }
 
     .delete-btn:hover {
@@ -347,14 +383,16 @@
 
     .message.success {
       display: block;
-      background: #dcfce7;
-      color: #166534;
+      background: #ecfdf5;
+      color: #047857;
+      border-bottom: 1px solid #a7f3d0;
     }
 
     .message.error {
       display: block;
-      background: #fee2e2;
-      color: #991b1b;
+      background: #fef2f2;
+      color: #b91c1c;
+      border-bottom: 1px solid #fecaca;
     }
 
     .empty-message {
@@ -473,17 +511,14 @@
 
   <nav class="navbar">
 
-    <div class="logo">
-
-      <div class="logo-box">
+    <a href="index.html" class="logo">
+      <div class="logo-icon">
         LS
       </div>
-
-      <span>
-        Learnsphere Admin
+      <span class="logo-text">
+        Learnsphere <span style="font-weight:700; font-size:13px; color:#0056d2; background:#ebf3ff; padding:3px 8px; border-radius:6px; margin-left:6px; letter-spacing:0;">Admin</span>
       </span>
-
-    </div>
+    </a>
 
     <button
       class="logout-btn"
