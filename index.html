@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>Learnsphere | Learn. Grow. Achieve.</title>
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop stop-color='%23312e81'/%3E%3Cstop offset='.55' stop-color='%234f46e5'/%3E%3Cstop offset='1' stop-color='%238b5cf6'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='18' fill='url(%23g)'/%3E%3Ctext x='32' y='40' text-anchor='middle' font-family='Arial,sans-serif' font-size='24' font-weight='800' fill='white'%3ELS%3C/text%3E%3C/svg%3E" />
+  <link rel="icon" type="image/svg+xml"
+    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop stop-color='%23312e81'/%3E%3Cstop offset='.55' stop-color='%234f46e5'/%3E%3Cstop offset='1' stop-color='%238b5cf6'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='18' fill='url(%23g)'/%3E%3Ctext x='32' y='40' text-anchor='middle' font-family='Arial,sans-serif' font-size='24' font-weight='800' fill='white'%3ELS%3C/text%3E%3C/svg%3E" />
 
   <!-- React -->
   <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
@@ -686,7 +688,7 @@
     .course-badge {
       padding: 6px 9px;
       border-radius: 20px;
-      background: rgba(255,255,255,.18);
+      background: rgba(255, 255, 255, .18);
       color: white;
       font-size: 10px;
       font-weight: 800;
@@ -754,7 +756,7 @@
       padding: 95px 0;
       overflow: hidden;
       background:
-        radial-gradient(circle at 20% 20%, rgba(139,92,246,.45), transparent 30%),
+        radial-gradient(circle at 20% 20%, rgba(139, 92, 246, .45), transparent 30%),
         linear-gradient(135deg, #312e81, #4f46e5);
       color: white;
     }
@@ -1050,6 +1052,7 @@
     /* RESPONSIVE */
 
     @media (max-width: 1000px) {
+
       .hero-grid,
       .cta-grid {
         grid-template-columns: 1fr;
@@ -1094,6 +1097,7 @@
     }
 
     @media (max-width: 760px) {
+
       .nav-links,
       .nav-actions {
         display: none;
@@ -1133,6 +1137,7 @@
     }
 
     @media (max-width: 560px) {
+
       .container,
       .nav-container {
         width: min(100% - 28px, 1180px);
@@ -1207,28 +1212,28 @@
       const [enquiryLoading, setEnquiryLoading] = useState(false);
 
       useEffect(() => {
-  const savedUser = localStorage.getItem("learnsphereUser");
-  const token = localStorage.getItem("learnsphereToken");
+        const savedUser = localStorage.getItem("learnsphereUser");
+        const token = localStorage.getItem("learnsphereToken");
 
-  if (!savedUser || !token) {
-    localStorage.removeItem("learnsphereUser");
-    localStorage.removeItem("learnsphereToken");
-    return;
-  }
+        if (!savedUser || !token) {
+          localStorage.removeItem("learnsphereUser");
+          localStorage.removeItem("learnsphereToken");
+          return;
+        }
 
-  try {
-    const parsedUser = JSON.parse(savedUser);
-    if (parsedUser && parsedUser.identifier) {
-      setUser(parsedUser);
-    } else {
-      throw new Error("Invalid saved user data");
-    }
-  } catch (error) {
-    console.warn("Clearing invalid saved login data.");
-    localStorage.removeItem("learnsphereUser");
-    localStorage.removeItem("learnsphereToken");
-  }
-}, []);
+        try {
+          const parsedUser = JSON.parse(savedUser);
+          if (parsedUser && parsedUser.identifier) {
+            setUser(parsedUser);
+          } else {
+            throw new Error("Invalid saved user data");
+          }
+        } catch (error) {
+          console.warn("Clearing invalid saved login data.");
+          localStorage.removeItem("learnsphereUser");
+          localStorage.removeItem("learnsphereToken");
+        }
+      }, []);
 
       useEffect(() => {
         document.body.classList.toggle("modal-open", loginOpen);
@@ -1355,23 +1360,23 @@
           }
 
           const loggedInUser = {
-  identifier: data.user.identifier,
-  role: data.user.role,
-  courseAccess: data.user.courseAccess
-};
+            identifier: data.user.identifier,
+            role: data.user.role,
+            courseAccess: data.user.courseAccess
+          };
 
-// Save user information
-localStorage.setItem(
-  "learnsphereUser",
-  JSON.stringify(loggedInUser)
-);
+          // Save user information
+          localStorage.setItem(
+            "learnsphereUser",
+            JSON.stringify(loggedInUser)
+          );
 
-// Save JWT authentication token
-if (data.token) {
-  localStorage.setItem("learnsphereToken", data.token);
-}
+          // Save JWT authentication token
+          if (data.token) {
+            localStorage.setItem("learnsphereToken", data.token);
+          }
 
-setUser(loggedInUser);
+          setUser(loggedInUser);
 
           setAuthMessage(data.message);
           setAuthMessageType("success");
@@ -1430,10 +1435,10 @@ setUser(loggedInUser);
       }
 
       function logout() {
-  localStorage.removeItem("learnsphereUser");
-  localStorage.removeItem("learnsphereToken");
-  setUser(null);
-}
+        localStorage.removeItem("learnsphereUser");
+        localStorage.removeItem("learnsphereToken");
+        setUser(null);
+      }
 
       function closeMenu() {
         setMenuOpen(false);
@@ -1441,7 +1446,7 @@ setUser(loggedInUser);
 
       return (
         <>
-          <header className="navbar">   
+          <header className="navbar">
             <div className="nav-container">
 
               <a href="#home" className="logo">
@@ -1458,35 +1463,35 @@ setUser(loggedInUser);
                 <a href="#contact" onClick={closeMenu}>Contact</a>
               </nav>
 
-             <div className="nav-actions">
-  {user ? (
-    <>
-      <span className="user-pill">
-        {user.identifier.length > 18
-          ? user.identifier.slice(0, 18) + "..."
-          : user.identifier}
-      </span>
+              <div className="nav-actions">
+                {user ? (
+                  <>
+                    <span className="user-pill">
+                      {user.identifier.length > 18
+                        ? user.identifier.slice(0, 18) + "..."
+                        : user.identifier}
+                    </span>
 
-      {user.role === "admin" && (
-        <a
-          href="admin.html"
-          className="login-btn"
-          style={{
-            textDecoration: "none",
-            display: "inline-flex",
-            alignItems: "center",
-            justifyContent: "center"
-          }}
-        >
-          Admin Dashboard
-        </a>
-      )}
+                    {user.role === "admin" && (
+                      <a
+                        href="admin.html"
+                        className="login-btn"
+                        style={{
+                          textDecoration: "none",
+                          display: "inline-flex",
+                          alignItems: "center",
+                          justifyContent: "center"
+                        }}
+                      >
+                        Admin Dashboard
+                      </a>
+                    )}
 
-      <button className="login-btn" onClick={logout}>
-        Log Out
-      </button>
-    </>
-  ) : (
+                    <button className="login-btn" onClick={logout}>
+                      Log Out
+                    </button>
+                  </>
+                ) : (
                   <button
                     className="login-btn"
                     onClick={() => openAuth("login")}
@@ -1617,7 +1622,7 @@ setUser(loggedInUser);
                 <h2>
                   Find the skills that move
                   <br />
-                  <span style={{color: "var(--primary)"}}>
+                  <span style={{ color: "var(--primary)" }}>
                     your career forward.
                   </span>
                 </h2>
@@ -1767,7 +1772,7 @@ setUser(loggedInUser);
             <div className="container cta-grid">
 
               <div>
-                <div className="eyebrow" style={{color: "#c7d2fe"}}>
+                <div className="eyebrow" style={{ color: "#c7d2fe" }}>
                   YOUR NEXT SKILL STARTS HERE
                 </div>
 
@@ -1794,7 +1799,7 @@ setUser(loggedInUser);
               >
                 <h3>Start Your Learning Journey</h3>
 
-                <p style={{color: "var(--muted)", fontSize: "13px"}}>
+                <p style={{ color: "var(--muted)", fontSize: "13px" }}>
                   Tell us what you want to learn and we'll help you choose
                   the right path.
                 </p>
@@ -1850,7 +1855,7 @@ setUser(loggedInUser);
                 {enquiryMessage && (
                   <div
                     className="form-message success"
-                    style={{color: enquiryMessage.includes("Thank") ? "#12b76a" : "#d92d20"}}
+                    style={{ color: enquiryMessage.includes("Thank") ? "#12b76a" : "#d92d20" }}
                   >
                     {enquiryMessage}
                   </div>
@@ -1927,7 +1932,7 @@ setUser(loggedInUser);
               <div>
                 <h4>Contact</h4>
                 <p>indra.kahar1@gmail.com</p>
-                <p>+91 6266741667</p>
+                <p>+91 9243553231</p>
                 <p>India</p>
               </div>
             </div>
@@ -2078,4 +2083,5 @@ setUser(loggedInUser);
     root.render(<App />);
   </script>
 </body>
+
 </html>
