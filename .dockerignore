@@ -10,3 +10,5 @@ Thumbs.db
 *.md
 upload-pmp-*.js
 load-test.js
+*.zip
+

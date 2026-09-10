@@ -22,6 +22,8 @@ COPY index.html ./
 COPY courses.html ./
 COPY pmp-details.html ./
 COPY admin.html ./
+COPY robots.txt ./
+COPY images/ ./images/
 
 # Use unprivileged node user
 USER node

@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
 
   <title>Learnsphere Admin</title>
-  <link rel="icon" type="image/svg+xml"
-    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop stop-color='%230b1d3a'/%3E%3Cstop offset='.55' stop-color='%230056d2'/%3E%3Cstop offset='1' stop-color='%2338bdf8'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='18' fill='url(%23g)'/%3E%3Ctext x='32' y='40' text-anchor='middle' font-family='Arial,sans-serif' font-size='24' font-weight='800' fill='white'%3ELS%3C/text%3E%3C/svg%3E" />
+  <link rel="icon" type="image/png" href="images/learnsphere-logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap');
@@ -17,7 +20,8 @@
       padding: 0;
     }
 
-    html, body {
+    html,
+    body {
       overflow-x: hidden;
       width: 100%;
       max-width: 100vw;
@@ -44,13 +48,27 @@
     .logo {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 4px;
       font-family: "Manrope", sans-serif;
       font-weight: 800;
       font-size: 22px;
       letter-spacing: -1px;
       white-space: nowrap;
       text-decoration: none;
+    }
+
+    .logo-img {
+      height: 44px;
+      width: auto;
+      max-height: 46px;
+      object-fit: contain;
+      display: block;
+      flex-shrink: 0;
+      transition: transform 0.25s ease;
+    }
+
+    .logo:hover .logo-img {
+      transform: scale(1.05);
     }
 
     .logo-icon {
@@ -97,6 +115,7 @@
     .logo-text {
       color: #101828;
     }
+
     .logout-btn {
       border: 1px solid #fee2e2;
       background: #fef2f2;
@@ -458,6 +477,10 @@
         font-size: 18px;
       }
 
+      .logo-img {
+        height: 36px;
+      }
+
       .logo-box {
         width: 35px;
         height: 35px;
@@ -512,18 +535,14 @@
   <nav class="navbar">
 
     <a href="index.html" class="logo">
-      <div class="logo-icon">
-        LS
-      </div>
+      <img src="images/learnsphere-logo.png" alt="Learnsphere" class="logo-img" />
       <span class="logo-text">
-        Learnsphere <span style="font-weight:700; font-size:13px; color:#0056d2; background:#ebf3ff; padding:3px 8px; border-radius:6px; margin-left:6px; letter-spacing:0;">Admin</span>
+        Learnsphere <span
+          style="font-weight:700; font-size:13px; color:#0056d2; background:#ebf3ff; padding:3px 8px; border-radius:6px; margin-left:6px; letter-spacing:0;">Admin</span>
       </span>
     </a>
 
-    <button
-      class="logout-btn"
-      onclick="logout()"
-    >
+    <button class="logout-btn" onclick="logout()">
       Logout
     </button>
 
@@ -553,10 +572,7 @@
           Total Users
         </div>
 
-        <div
-          class="stat-value"
-          id="totalUsers"
-        >
+        <div class="stat-value" id="totalUsers">
           0
         </div>
 
@@ -569,10 +585,7 @@
           Without PMP Access
         </div>
 
-        <div
-          class="stat-value"
-          id="withoutPmp"
-        >
+        <div class="stat-value" id="withoutPmp">
           0
         </div>
 
@@ -585,10 +598,7 @@
           With PMP Access
         </div>
 
-        <div
-          class="stat-value"
-          id="withPmp"
-        >
+        <div class="stat-value" id="withPmp">
           0
         </div>
 
@@ -612,19 +622,10 @@
 
         <div class="search-box">
 
-          <input
-            type="text"
-            id="userSearch"
-            class="search-input"
-            placeholder="Search user by email or mobile..."
-            autocomplete="off"
-          />
+          <input type="text" id="userSearch" class="search-input" placeholder="Search user by email or mobile..."
+            autocomplete="off" />
 
-          <button
-            type="button"
-            class="clear-search"
-            onclick="clearSearch()"
-          >
+          <button type="button" class="clear-search" onclick="clearSearch()">
             Clear
           </button>
 
@@ -635,10 +636,7 @@
 
       <!-- MESSAGE -->
 
-      <div
-        id="message"
-        class="message"
-      ></div>
+      <div id="message" class="message"></div>
 
 
       <!-- TABLE -->
@@ -676,10 +674,7 @@
 
             <tr>
 
-              <td
-                colspan="4"
-                class="empty-message"
-              >
+              <td colspan="4" class="empty-message">
                 Loading users...
               </td>
 
@@ -721,7 +716,7 @@
       window.LEARNSPHERE_API_URL ||
       (
         (window.location.hostname === "localhost" ||
-         window.location.hostname === "127.0.0.1")
+          window.location.hostname === "127.0.0.1")
           ? "http://localhost:5000/api"
           : `${window.location.origin}/api`
       );
@@ -1139,10 +1134,9 @@
                 actionButtons = `
                   <div class="action-buttons">
 
-                    ${
-                      hasPmp
+                    ${hasPmp
 
-                        ? `
+                    ? `
                           <button
                             class="revoke-btn"
                             onclick="updatePmpAccess(
@@ -1154,7 +1148,7 @@
                           </button>
                         `
 
-                        : `
+                    : `
                           <button
                             class="grant-btn"
                             onclick="updatePmpAccess(
@@ -1165,7 +1159,7 @@
                             Grant PMP
                           </button>
                         `
-                    }
+                  }
 
 
                     <!--
@@ -1194,8 +1188,8 @@
 
                   <td>
                     ${escapeHtml(
-                      user.identifier
-                    )}
+                user.identifier
+              )}
                   </td>
 
                   <td>
@@ -1481,4 +1475,5 @@
   </script>
 
 </body>
+
 </html>

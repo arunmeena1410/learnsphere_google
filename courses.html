@@ -1,30 +1,115 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Explore professional certification courses across Project Management, Cloud, Cyber Security, Agile, and Technology at Learnsphere." />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Learnsphere | All Courses" />
+  <meta property="og:description" content="Explore professional certification courses across Project Management, Cloud, Cyber Security, Agile, and Technology at Learnsphere." />
+  <meta property="og:image" content="images/learnsphere-logo.png" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Learnsphere | All Courses" />
+  <meta name="twitter:description" content="Explore professional certification courses across Project Management, Cloud, Cyber Security, Agile, and Technology at Learnsphere." />
+  <meta name="twitter:image" content="images/learnsphere-logo.png" />
+
   <title>Learnsphere | All Courses</title>
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop stop-color='%230b1d3a'/%3E%3Cstop offset='.55' stop-color='%230056d2'/%3E%3Cstop offset='1' stop-color='%2338bdf8'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='18' fill='url(%23g)'/%3E%3Ctext x='32' y='40' text-anchor='middle' font-family='Arial,sans-serif' font-size='24' font-weight='800' fill='white'%3ELS%3C/text%3E%3C/svg%3E" />
+  <link rel="icon" type="image/png" href="images/learnsphere-logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <style>
-    :root{
-      --primary:#0056d2; --dark:#070f1e; --muted:#64748b; --line:#e2e8f0;
-      --light:#f8fafc; --white:#fff; --success:#059669;
+    @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap');
+
+    :root {
+      --primary: #0056d2;
+      --dark: #070f1e;
+      --muted: #64748b;
+      --line: #e2e8f0;
+      --light: #f8fafc;
+      --white: #fff;
+      --success: #059669;
     }
-    *{box-sizing:border-box;margin:0;padding:0}
-    html{scroll-behavior:smooth}
-    html, body{overflow-x:hidden;width:100%;max-width:100vw}
-    body{font-family:Inter,Arial,sans-serif;background:var(--light);color:var(--dark)}
-    a{text-decoration:none;color:inherit}
-    .navbar{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.96);border-bottom:1px solid var(--line);backdrop-filter:blur(12px)}
-    .nav-container{width:min(1180px,92%);margin:auto;height:76px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0
+    }
+
+    html {
+      scroll-behavior: smooth
+    }
+
+    html,
+    body {
+      overflow-x: hidden;
+      width: 100%;
+      max-width: 100vw
+    }
+
+    body {
+      font-family: "Manrope", Arial, sans-serif;
+      background: var(--light);
+      color: var(--dark)
+    }
+
+    button,
+    input,
+    select,
+    textarea,
+    a {
+      font-family: inherit
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit
+    }
+
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(255, 255, 255, .96);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(12px)
+    }
+
+    .nav-container {
+      width: min(1180px, 92%);
+      margin: auto;
+      height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px
+    }
+
     .logo {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 4px;
+      font-family: "Manrope", sans-serif;
       font-weight: 800;
       font-size: 22px;
       letter-spacing: -1px;
       white-space: nowrap;
+      text-decoration: none;
+    }
+
+    .logo-img {
+      height: 44px;
+      width: auto;
+      max-height: 46px;
+      object-fit: contain;
+      display: block;
+      flex-shrink: 0;
+      transition: transform 0.25s ease;
+    }
+
+    .logo:hover .logo-img {
+      transform: scale(1.05);
     }
 
     .logo-icon {
@@ -71,106 +156,541 @@
     .logo-text {
       color: #101828;
     }
-    .nav-links{display:flex;gap:24px;align-items:center;color:#475569;font-size:14px;font-weight:600}
-    .nav-links a:hover,.nav-links a.active{color:var(--primary)}
-    .nav-actions{display:flex;align-items:center;gap:10px}
-    .home-btn{padding:10px 16px;background:var(--primary);color:#fff;border-radius:10px;font-weight:700;font-size:14px;display:inline-flex;align-items:center;white-space:nowrap;transition:background .2s}
-    .home-btn:hover{background:#0041a8}
-    .mobile-menu-btn{display:none;width:42px;height:42px;border:1px solid var(--line);border-radius:10px;background:#fff;font-size:20px;color:var(--dark);cursor:pointer;align-items:center;justify-content:center}
-    .mobile-nav{display:none;position:absolute;top:76px;left:0;right:0;background:rgba(255,255,255,.98);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);box-shadow:0 15px 30px rgba(0,0,0,.08);padding:15px 24px 22px;flex-direction:column;gap:12px}
-    .mobile-nav.show{display:flex}
-    .mobile-nav a{font-size:15px;font-weight:600;color:#475569;padding:6px 0;border-bottom:1px solid #f1f5f9}
-    .mobile-nav a.active{color:var(--primary)}
-    .hero{background:radial-gradient(circle at 15% 20%, rgba(0, 86, 210, 0.25), transparent 35%), radial-gradient(circle at 85% 75%, rgba(56, 189, 248, 0.15), transparent 35%), linear-gradient(135deg,#070f1e 0%,#0b1d3a 55%,#0d2852 100%);color:#fff;padding:58px 0 64px}
-    .container{width:min(1180px,92%);margin:auto}
-    .breadcrumb{font-size:13px;color:#93c5fd;margin-bottom:16px}
-    .hero h1{font-size:clamp(30px,5vw,54px);margin-bottom:14px;line-height:1.2}
-    .hero p{max-width:650px;color:#e0e7ff;line-height:1.7}
-    .page{padding:42px 0 70px}
-    .layout{display:grid;grid-template-columns:270px 1fr;gap:28px;align-items:start}
-    .filters{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px;position:sticky;top:100px}
-    .filters h3{font-size:18px;margin-bottom:18px}
-    .filter-group{padding:18px 0;border-top:1px solid var(--line)}
-    .filter-group:first-of-type{border-top:0;padding-top:0}
-    .filter-group h4{font-size:14px;margin-bottom:12px}
-    .check{display:flex;gap:9px;align-items:center;margin:10px 0;color:#64748b;font-size:14px;cursor:pointer}
-    .check input{accent-color:var(--primary)}
-    .clear{width:100%;padding:10px;border:1px solid #bfdbfe;background:#ebf3ff;color:#0056d2;border-radius:9px;font-weight:700;cursor:pointer;transition:background .2s}
-    .clear:hover{background:#dbeafe}
-    .topbar{display:flex;justify-content:space-between;gap:16px;align-items:center;margin-bottom:22px}
-    .search{flex:1;position:relative}
-    .search input{width:100%;padding:14px 16px;border:1px solid var(--line);border-radius:11px;outline:none;background:#fff;font-size:14px;transition:border-color .2s,box-shadow .2s}
-    .search input:focus{border-color:#0056d2;box-shadow:0 0 0 3px rgba(0, 86, 210, 0.12)}
-    .sort{padding:13px 14px;border:1px solid var(--line);border-radius:11px;background:#fff;color:#475569;font-size:14px}
-    .result-info{color:#64748b;font-size:14px;margin-bottom:20px}
-    .courses-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
-    .course{background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden;transition:transform .25s ease,box-shadow .25s ease}
-    .course:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(15,23,42,.08)}
-    .course.pmp-clickable{cursor:pointer}
-    .course.pmp-clickable:focus-visible{outline:3px solid #0056d2;outline-offset:3px}
-    .course.pmp-clickable .view{pointer-events:auto}
-    .course-top{height:118px;padding:16px;display:flex;align-items:flex-start;justify-content:space-between;color:#fff}
-    .pmi{background:linear-gradient(135deg,#070f1e 0%,#0b1d3a 50%,#0056d2 100%)}
-    .cloud{background:linear-gradient(135deg,#082f49 0%,#0284c7 60%,#38bdf8 100%)}
-    .security{background:linear-gradient(135deg,#064e3b 0%,#047857 60%,#059669 100%)}
-    .agile{background:linear-gradient(135deg,#7c2d12 0%,#c2410c 60%,#ea580c 100%)}
-    .it{background:linear-gradient(135deg,#3b0764 0%,#6b21a8 60%,#a855f7 100%)}
-    .data{background:linear-gradient(135deg,#881337 0%,#be123c 60%,#f43f5e 100%)}
-    .badge{font-size:10px;font-weight:800;padding:6px 9px;border-radius:999px;background:rgba(255,255,255,.18);backdrop-filter:blur(5px)}
-    .course-body{padding:18px}
-    .category{font-size:11px;font-weight:800;letter-spacing:.08em;color:var(--primary);margin-bottom:8px}
-    .course h3{font-size:17px;line-height:1.45;margin-bottom:10px;min-height:49px}
-    .desc{font-size:13px;line-height:1.65;color:var(--muted);min-height:84px}
-    .meta{display:flex;justify-content:space-between;gap:10px;margin:16px 0;color:#64748b;font-size:12px}
-    .rating{color:#f59e0b;letter-spacing:1px}
-    .footer{display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--line);padding-top:14px}
-    .price{font-weight:800;font-size:18px;color:#0f172a}
-    .view{padding:9px 12px;border-radius:9px;background:#ebf3ff;color:#0056d2;font-size:12px;font-weight:800;transition:background .2s,color .2s}
-    .view:hover{background:#0056d2;color:#ffffff}
-    .empty{display:none;background:#fff;border:1px dashed #cbd5e1;border-radius:16px;padding:45px;text-align:center;color:#64748b}
-    .pagination{display:flex;justify-content:center;gap:8px;margin-top:32px}
-    .pagination button{border:1px solid var(--line);background:#fff;width:38px;height:38px;border-radius:9px;cursor:pointer;font-weight:700;color:#475569;transition:all .2s}
-    .pagination button:hover:not(.active){background:#f1f5f9;color:#0f172a}
-    .pagination button.active{background:var(--primary);color:#fff;border-color:var(--primary)}
-    .mobile-filter{display:none;width:100%;padding:13px 16px;border:1px solid #bfdbfe;background:#ebf3ff;color:#0056d2;border-radius:12px;font-weight:800;font-size:14px;cursor:pointer;text-align:center;margin-bottom:16px;align-items:center;justify-content:center;gap:8px}
-    @media(max-width:1024px){.courses-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.nav-links{gap:15px}}
-    @media(max-width:768px){
-      .nav-links{display:none}
-      .mobile-menu-btn{display:flex}
-      .layout{grid-template-columns:1fr}
-      .filters{display:none;position:static}
-      .filters.show{display:block;margin-bottom:20px}
-      .mobile-filter{display:flex}
-      .topbar{flex-direction:column;align-items:stretch;gap:12px}
-      .sort{width:100%}
+
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      align-items: center;
+      color: #475569;
+      font-size: 14px;
+      font-weight: 600
     }
-    @media(max-width:600px){
-      .courses-grid{grid-template-columns:1fr}
-      .home-btn{padding:8px 12px;font-size:13px}
-      .logo{font-size:19px}
-      .hero{padding:40px 0 46px}
-      .desc{min-height:auto}
-      .course h3{min-height:auto}
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--primary)
     }
-    @media(max-width:380px){
-      .nav-container{width:calc(100% - 24px)}
-      .logo span{display:none}
-      .hero h1{font-size:26px}
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px
+    }
+
+    .home-btn {
+      padding: 10px 16px;
+      background: var(--primary);
+      color: #fff;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 14px;
+      display: inline-flex;
+      align-items: center;
+      white-space: nowrap;
+      transition: background .2s
+    }
+
+    .home-btn:hover {
+      background: #0041a8
+    }
+
+    .mobile-menu-btn {
+      display: none;
+      width: 42px;
+      height: 42px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: #fff;
+      font-size: 20px;
+      color: var(--dark);
+      cursor: pointer;
+      align-items: center;
+      justify-content: center
+    }
+
+    .mobile-nav {
+      display: none;
+      position: absolute;
+      top: 76px;
+      left: 0;
+      right: 0;
+      background: rgba(255, 255, 255, .98);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--line);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, .08);
+      padding: 15px 24px 22px;
+      flex-direction: column;
+      gap: 12px
+    }
+
+    .mobile-nav.show {
+      display: flex
+    }
+
+    .mobile-nav a {
+      font-size: 15px;
+      font-weight: 600;
+      color: #475569;
+      padding: 6px 0;
+      border-bottom: 1px solid #f1f5f9
+    }
+
+    .mobile-nav a.active {
+      color: var(--primary)
+    }
+
+    .hero {
+      background: radial-gradient(circle at 15% 20%, rgba(0, 86, 210, 0.25), transparent 35%), radial-gradient(circle at 85% 75%, rgba(56, 189, 248, 0.15), transparent 35%), linear-gradient(135deg, #070f1e 0%, #0b1d3a 55%, #0d2852 100%);
+      color: #fff;
+      padding: 58px 0 64px
+    }
+
+    .container {
+      width: min(1180px, 92%);
+      margin: auto
+    }
+
+    .breadcrumb {
+      font-size: 13px;
+      color: #93c5fd;
+      margin-bottom: 16px
+    }
+
+    .hero h1 {
+      font-size: clamp(30px, 5vw, 54px);
+      margin-bottom: 14px;
+      line-height: 1.2
+    }
+
+    .hero p {
+      max-width: 650px;
+      color: #e0e7ff;
+      line-height: 1.7
+    }
+
+    .page {
+      padding: 42px 0 70px
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 270px 1fr;
+      gap: 28px;
+      align-items: start
+    }
+
+    .filters {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 22px;
+      position: sticky;
+      top: 100px
+    }
+
+    .filters h3 {
+      font-size: 18px;
+      margin-bottom: 18px
+    }
+
+    .filter-group {
+      padding: 18px 0;
+      border-top: 1px solid var(--line)
+    }
+
+    .filter-group:first-of-type {
+      border-top: 0;
+      padding-top: 0
+    }
+
+    .filter-group h4 {
+      font-size: 14px;
+      margin-bottom: 12px
+    }
+
+    .check {
+      display: flex;
+      gap: 9px;
+      align-items: center;
+      margin: 10px 0;
+      color: #64748b;
+      font-size: 14px;
+      cursor: pointer
+    }
+
+    .check input {
+      accent-color: var(--primary)
+    }
+
+    .clear {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #bfdbfe;
+      background: #ebf3ff;
+      color: #0056d2;
+      border-radius: 9px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background .2s
+    }
+
+    .clear:hover {
+      background: #dbeafe
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 22px
+    }
+
+    .search {
+      flex: 1;
+      position: relative
+    }
+
+    .search input {
+      width: 100%;
+      padding: 14px 16px;
+      border: 1px solid var(--line);
+      border-radius: 11px;
+      outline: none;
+      background: #fff;
+      font-size: 14px;
+      transition: border-color .2s, box-shadow .2s
+    }
+
+    .search input:focus {
+      border-color: #0056d2;
+      box-shadow: 0 0 0 3px rgba(0, 86, 210, 0.12)
+    }
+
+    .sort {
+      padding: 13px 14px;
+      border: 1px solid var(--line);
+      border-radius: 11px;
+      background: #fff;
+      color: #475569;
+      font-size: 14px
+    }
+
+    .result-info {
+      color: #64748b;
+      font-size: 14px;
+      margin-bottom: 20px
+    }
+
+    .courses-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px
+    }
+
+    .course {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      overflow: hidden;
+      transition: transform .25s ease, box-shadow .25s ease
+    }
+
+    .course:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 18px 40px rgba(15, 23, 42, .08)
+    }
+
+    .course.pmp-clickable {
+      cursor: pointer
+    }
+
+    .course.pmp-clickable:focus-visible {
+      outline: 3px solid #0056d2;
+      outline-offset: 3px
+    }
+
+    .course.pmp-clickable .view {
+      pointer-events: auto
+    }
+
+    .course-top {
+      height: 118px;
+      padding: 16px;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      color: #fff
+    }
+
+    .pmi {
+      background: linear-gradient(135deg, #070f1e 0%, #0b1d3a 50%, #0056d2 100%)
+    }
+
+    .cloud {
+      background: linear-gradient(135deg, #082f49 0%, #0284c7 60%, #38bdf8 100%)
+    }
+
+    .security {
+      background: linear-gradient(135deg, #064e3b 0%, #047857 60%, #059669 100%)
+    }
+
+    .agile {
+      background: linear-gradient(135deg, #7c2d12 0%, #c2410c 60%, #ea580c 100%)
+    }
+
+    .it {
+      background: linear-gradient(135deg, #3b0764 0%, #6b21a8 60%, #a855f7 100%)
+    }
+
+    .data {
+      background: linear-gradient(135deg, #881337 0%, #be123c 60%, #f43f5e 100%)
+    }
+
+    .badge {
+      font-size: 10px;
+      font-weight: 800;
+      padding: 6px 9px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, .18);
+      backdrop-filter: blur(5px)
+    }
+
+    .course-body {
+      padding: 18px
+    }
+
+    .category {
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .08em;
+      color: var(--primary);
+      margin-bottom: 8px
+    }
+
+    .course h3 {
+      font-size: 17px;
+      line-height: 1.45;
+      margin-bottom: 10px;
+      min-height: 49px
+    }
+
+    .desc {
+      font-size: 13px;
+      line-height: 1.65;
+      color: var(--muted);
+      min-height: 84px
+    }
+
+    .meta {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      margin: 16px 0;
+      color: #64748b;
+      font-size: 12px
+    }
+
+    .rating {
+      color: #f59e0b;
+      letter-spacing: 1px
+    }
+
+    .footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid var(--line);
+      padding-top: 14px
+    }
+
+    .price {
+      font-weight: 800;
+      font-size: 18px;
+      color: #0f172a
+    }
+
+    .view {
+      padding: 9px 12px;
+      border-radius: 9px;
+      background: #ebf3ff;
+      color: #0056d2;
+      font-size: 12px;
+      font-weight: 800;
+      transition: background .2s, color .2s
+    }
+
+    .view:hover {
+      background: #0056d2;
+      color: #ffffff
+    }
+
+    .empty {
+      display: none;
+      background: #fff;
+      border: 1px dashed #cbd5e1;
+      border-radius: 16px;
+      padding: 45px;
+      text-align: center;
+      color: #64748b
+    }
+
+    .pagination {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 32px
+    }
+
+    .pagination button {
+      border: 1px solid var(--line);
+      background: #fff;
+      width: 38px;
+      height: 38px;
+      border-radius: 9px;
+      cursor: pointer;
+      font-weight: 700;
+      color: #475569;
+      transition: all .2s
+    }
+
+    .pagination button:hover:not(.active) {
+      background: #f1f5f9;
+      color: #0f172a
+    }
+
+    .pagination button.active {
+      background: var(--primary);
+      color: #fff;
+      border-color: var(--primary)
+    }
+
+    .mobile-filter {
+      display: none;
+      width: 100%;
+      padding: 13px 16px;
+      border: 1px solid #bfdbfe;
+      background: #ebf3ff;
+      color: #0056d2;
+      border-radius: 12px;
+      font-weight: 800;
+      font-size: 14px;
+      cursor: pointer;
+      text-align: center;
+      margin-bottom: 16px;
+      align-items: center;
+      justify-content: center;
+      gap: 8px
+    }
+
+    @media(max-width:1024px) {
+      .courses-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr))
+      }
+
+      .nav-links {
+        gap: 15px
+      }
+    }
+
+    @media(max-width:768px) {
+      .nav-links {
+        display: none
+      }
+
+      .mobile-menu-btn {
+        display: flex
+      }
+
+      .layout {
+        grid-template-columns: 1fr
+      }
+
+      .filters {
+        display: none;
+        position: static
+      }
+
+      .filters.show {
+        display: block;
+        margin-bottom: 20px
+      }
+
+      .mobile-filter {
+        display: flex
+      }
+
+      .topbar {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px
+      }
+
+      .sort {
+        width: 100%
+      }
+    }
+
+    @media(max-width:600px) {
+      .courses-grid {
+        grid-template-columns: 1fr
+      }
+
+      .home-btn {
+        padding: 8px 12px;
+        font-size: 13px
+      }
+
+      .logo {
+        font-size: 19px
+      }
+
+      .logo-img {
+        height: 36px
+      }
+
+      .hero {
+        padding: 40px 0 46px
+      }
+
+      .desc {
+        min-height: auto
+      }
+
+      .course h3 {
+        min-height: auto
+      }
+    }
+
+    @media(max-width:380px) {
+      .nav-container {
+        width: calc(100% - 24px)
+      }
+
+      .logo span {
+        display: none
+      }
+
+      .hero h1 {
+        font-size: 26px
+      }
     }
   </style>
 </head>
+
 <body>
   <header class="navbar">
     <div class="nav-container">
       <a href="index.html" class="logo">
-        <div class="logo-icon">LS</div><span class="logo-text">Learnsphere</span>
+        <img src="images/learnsphere-logo.png" alt="Learnsphere" class="logo-img"><span
+          class="logo-text">Learnsphere</span>
       </a>
       <nav class="nav-links">
         <a href="index.html#home">Home</a>
         <a class="active" href="courses.html">Courses</a>
+        <a href="index.html#enquiry">Enquiry</a>
         <a href="index.html#learning">Learning Options</a>
         <a href="index.html#about">About</a>
-        <a href="index.html#enquiry">Enquiry</a>
         <a href="index.html#contact">Contact</a>
       </nav>
       <div class="nav-actions">
@@ -181,9 +701,9 @@
     <div class="mobile-nav" id="mobileNav">
       <a href="index.html#home">Home</a>
       <a class="active" href="courses.html">Courses</a>
+      <a href="index.html#enquiry">Enquiry</a>
       <a href="index.html#learning">Learning Options</a>
       <a href="index.html#about">About</a>
-      <a href="index.html#enquiry">Enquiry</a>
       <a href="index.html#contact">Contact</a>
     </div>
   </header>
@@ -192,13 +712,15 @@
     <div class="container">
       <div class="breadcrumb">Home / Courses</div>
       <h1>Explore All Courses</h1>
-      <p>Discover professional learning paths in project management, cloud, cybersecurity, agile methods, IT and data. Search, filter and find the course that fits your next career goal.</p>
+      <p>Discover professional learning paths in project management, cloud, cybersecurity, agile methods, IT and data.
+        Search, filter and find the course that fits your next career goal.</p>
     </div>
   </section>
 
   <main class="page">
     <div class="container">
-      <button class="mobile-filter" onclick="document.querySelector('.filters').classList.toggle('show')">☰ Show / Hide Filters</button>
+      <button class="mobile-filter" onclick="document.querySelector('.filters').classList.toggle('show')">☰ Show / Hide
+        Filters</button>
       <div class="layout">
         <aside class="filters">
           <h3>Filter Courses</h3>
@@ -227,7 +749,8 @@
 
         <section>
           <div class="topbar">
-            <div class="search"><input id="searchInput" placeholder="Search courses, certifications or skills..." /></div>
+            <div class="search"><input id="searchInput" placeholder="Search courses, certifications or skills..." />
+            </div>
             <select class="sort" id="sortSelect">
               <option value="default">Sort by: Featured</option>
               <option value="name">Name: A to Z</option>
@@ -238,7 +761,10 @@
           </div>
           <div class="result-info" id="resultInfo">Showing all courses</div>
           <div class="courses-grid" id="coursesGrid"></div>
-          <div class="empty" id="emptyState"><h3>No courses found</h3><p>Try changing your search or filters.</p></div>
+          <div class="empty" id="emptyState">
+            <h3>No courses found</h3>
+            <p>Try changing your search or filters.</p>
+          </div>
           <div class="pagination"><button class="active">1</button><button>2</button><button>3</button></div>
         </section>
       </div>
@@ -247,18 +773,25 @@
 
   <script>
     const courses = [
-      {title:"PMP® Certification Training",category:"PMI",level:"Advanced",price:299,rating:4.9,students:"2,400+ learners",badge:"BESTSELLER",theme:"pmi",desc:"Prepare for the PMP® certification journey with predictive, agile and hybrid project management approaches."},
-      {title:"CAPM® Certification Training",category:"PMI",level:"Beginner",price:229,rating:4.8,students:"1,850+ learners",badge:"POPULAR",theme:"pmi",desc:"Build a strong foundation in project management principles, terminology and professional practices."},
-      {title:"AWS Certified Solutions Architect",category:"Cloud",level:"Intermediate",price:279,rating:4.9,students:"3,100+ learners",badge:"TRENDING",theme:"cloud",desc:"Learn core AWS services, architecture concepts, security and cloud solution design."},
-      {title:"CompTIA Security+ Training",category:"Security",level:"Intermediate",price:259,rating:4.8,students:"2,700+ learners",badge:"POPULAR",theme:"security",desc:"Develop essential cybersecurity knowledge covering threats, security operations and risk management."},
-      {title:"Certified ScrumMaster® Training",category:"Agile",level:"Beginner",price:249,rating:4.8,students:"1,600+ learners",badge:"FEATURED",theme:"agile",desc:"Learn Scrum roles, events, artifacts and practical techniques for effective agile teams."},
-      {title:"PRINCE2® Foundation Training",category:"PMI",level:"Beginner",price:239,rating:4.7,students:"2,100+ learners",badge:"POPULAR",theme:"pmi",desc:"Understand a structured project management method with principles, practices and processes."},
-      {title:"CompTIA A+ Certification Training",category:"IT",level:"Beginner",price:219,rating:4.7,students:"3,500+ learners",badge:"START HERE",theme:"it",desc:"Build practical IT support skills across hardware, operating systems, networking and troubleshooting."},
-      {title:"CompTIA Network+ Training",category:"IT",level:"Intermediate",price:269,rating:4.8,students:"2,900+ learners",badge:"POPULAR",theme:"it",desc:"Develop networking skills including connectivity, operations, security and troubleshooting."},
-      {title:"Certified Ethical Hacker Basics",category:"Security",level:"Advanced",price:319,rating:4.6,students:"1,300+ learners",badge:"ADVANCED",theme:"security",desc:"Explore ethical hacking concepts, security testing methodology and common defensive practices."},
-      {title:"AWS Cloud Practitioner Training",category:"Cloud",level:"Beginner",price:199,rating:4.7,students:"2,200+ learners",badge:"BEGINNER",theme:"cloud",desc:"Start your cloud learning journey with AWS fundamentals, pricing, security and core services."},
-      {title:"Power BI Data Analytics",category:"Data",level:"Intermediate",price:239,rating:4.8,students:"1,900+ learners",badge:"TRENDING",theme:"data",desc:"Learn to prepare data, build reports and create interactive dashboards for business decisions."},
-      {title:"Agile Project Management",category:"Agile",level:"Intermediate",price:229,rating:4.7,students:"1,450+ learners",badge:"FEATURED",theme:"agile",desc:"Apply agile planning, iterative delivery and collaboration techniques to modern projects."}
+      { title: "PMP® Certification Training", category: "PMI", level: "Advanced", price: 370.50, rating: 4.9, students: "2,400+ learners", badge: "BESTSELLER", theme: "pmi", desc: "Prepare for the PMP® certification journey with predictive, agile and hybrid project management approaches." },
+      { title: "CAPM® Certification Training", category: "PMI", level: "Beginner", price: 265, rating: 4.8, students: "1,850+ learners", badge: "POPULAR", theme: "pmi", desc: "Build a strong foundation in project management principles, terminology and professional practices." },
+      { title: "CPMAI™ Certification Training", category: "PMI", level: "Advanced", price: 370.50, rating: 4.7, students: "2,200+ learners", badge: "BESTSELLER", theme: "pmi", desc: "Your license to lead the future of AI. With PMI-CPMAI™, you’ll gain the tools to build with AI effectively, giving you the playbook to secure AI success." },
+      { title: "ACP® Certification Training", category: "PMI", level: "Advanced", price: 370.50, rating: 4.8, students: "2,000+ learners", badge: "POPULAR", theme: "pmi", desc: "The PMI-ACP is a formal credential that validates a professional's expertise in agile principles, methodologies, and real-world project practices." },
+      { title: "RMP® Certification Training", category: "PMI", level: "Intermediate", price: 370.50, rating: 4.7, students: "2,000+ learners", badge: "POPULAR", theme: "pmi", desc: "Master risk management strategies and techniques with our PMI-RMP Certification course." },
+      { title: "CP™ Certification Training", category: "PMI", level: "Intermediate", price: 370.50, rating: 4.9, students: "2,100+ learners", badge: "FEATURED", theme: "pmi", desc: "The PMI-CP is the only internationally recognized certification that offers an in-depth curriculum on the construction industry." },
+      { title: "PMOCP™ Certification Training", category: "PMI", level: "Advanced", price: 370.50, rating: 4.5, students: "1,900+ learners", badge: "FEATURED", theme: "pmi", desc: "The PMI-PMOCP certifies your expertise in leading and shaping Project Management Offices, demonstrating your ability to drive strategic value." },
+      { title: "PBA® Certification Training", category: "PMI", level: "Intermediate", price: 370.50, rating: 4.6, students: "1,600+ learners", badge: "POPULAR", theme: "pmi", desc: "The PMI-PBA certification recognizes an individual’s expertise in business analysis and uses these tools and techniques to improve the overall success of projects." },
+      { title: "CPMAI™ Certification Training", category: "PMI", level: "Beginner", price: 370.50, rating: 4.7, students: "1,800+ learners", badge: "TRENDING", theme: "pmi", desc: "Your license to lead the future of AI. With PMI-CPMAI™, you’ll gain the tools to build with AI effectively, giving you the playbook to secure AI success." },
+      { title: "AWS Certified Solutions Architect", category: "Cloud", level: "Intermediate", price: 84.66, rating: 4.9, students: "3,100+ learners", badge: "TRENDING", theme: "cloud", desc: "Learn core AWS services, architecture concepts, security and cloud solution design." },
+      { title: "CompTIA Security+ Training", category: "Security", level: "Intermediate", price: 370.50, rating: 4.8, students: "2,700+ learners", badge: "POPULAR", theme: "security", desc: "Develop essential cybersecurity knowledge covering threats, security operations and risk management." },
+      { title: "Certified ScrumMaster® Training", category: "Agile", level: "Beginner", price: 264.58, rating: 4.8, students: "1,600+ learners", badge: "FEATURED", theme: "agile", desc: "Learn Scrum roles, events, artifacts and practical techniques for effective agile teams." },
+      { title: "PRINCE2® Foundation Training", category: "PMI", level: "Beginner", price: 190.50, rating: 4.7, students: "2,100+ learners", badge: "POPULAR", theme: "pmi", desc: "Understand a structured project management method with principles, practices and processes." },
+      { title: "CompTIA A+ Certification Training", category: "IT", level: "Beginner", price: 296.33, rating: 4.7, students: "3,500+ learners", badge: "START HERE", theme: "it", desc: "Build practical IT support skills across hardware, operating systems, networking and troubleshooting." },
+      { title: "CompTIA Network+ Training", category: "IT", level: "Intermediate", price: 338.66, rating: 4.8, students: "2,900+ learners", badge: "POPULAR", theme: "it", desc: "Develop networking skills including connectivity, operations, security and troubleshooting." },
+      { title: "Certified Ethical Hacker Basics", category: "Security", level: "Advanced", price: 444.49, rating: 4.6, students: "1,300+ learners", badge: "ADVANCED", theme: "security", desc: "Explore ethical hacking concepts, security testing methodology and common defensive practices." },
+      { title: "AWS Cloud Practitioner Training", category: "Cloud", level: "Beginner", price: 137.50, rating: 4.7, students: "2,200+ learners", badge: "BEGINNER", theme: "cloud", desc: "Start your cloud learning journey with AWS fundamentals, pricing, security and core services." },
+      { title: "Power BI Data Analytics", category: "Data", level: "Intermediate", price: 84.66, rating: 4.8, students: "1,900+ learners", badge: "TRENDING", theme: "data", desc: "Learn to prepare data, build reports and create interactive dashboards for business decisions." },
+      { title: "Agile Project Management", category: "Agile", level: "Intermediate", price: 317.49, rating: 4.7, students: "1,450+ learners", badge: "FEATURED", theme: "agile", desc: "Apply agile planning, iterative delivery and collaboration techniques to modern projects." }
     ];
 
     const grid = document.getElementById("coursesGrid");
@@ -267,16 +800,16 @@
     const sortSelect = document.getElementById("sortSelect");
     const emptyState = document.getElementById("emptyState");
 
-    function stars(rating){ return "★★★★★"; }
+    function stars(rating) { return "★★★★★"; }
 
-    function getFilteredCourses(){
+    function getFilteredCourses() {
       const query = searchInput.value.toLowerCase().trim();
-      const categories = [...document.querySelectorAll(".filter-category:checked")].map(x=>x.value);
-      const levels = [...document.querySelectorAll(".filter-level:checked")].map(x=>x.value);
-      const prices = [...document.querySelectorAll(".filter-price:checked")].map(x=>x.value);
+      const categories = [...document.querySelectorAll(".filter-category:checked")].map(x => x.value);
+      const levels = [...document.querySelectorAll(".filter-level:checked")].map(x => x.value);
+      const prices = [...document.querySelectorAll(".filter-price:checked")].map(x => x.value);
 
       let list = courses.filter(c => {
-        const searchMatch = !query || (c.title+" "+c.category+" "+c.desc).toLowerCase().includes(query);
+        const searchMatch = !query || (c.title + " " + c.category + " " + c.desc).toLowerCase().includes(query);
         const categoryMatch = !categories.length || categories.includes(c.category);
         const levelMatch = !levels.length || levels.includes(c.level);
         const priceGroup = c.price < 250 ? "Under 250" : "250 Plus";
@@ -284,25 +817,25 @@
         return searchMatch && categoryMatch && levelMatch && priceMatch;
       });
 
-      if(sortSelect.value==="name") list.sort((a,b)=>a.title.localeCompare(b.title));
-      if(sortSelect.value==="priceLow") list.sort((a,b)=>a.price-b.price);
-      if(sortSelect.value==="priceHigh") list.sort((a,b)=>b.price-a.price);
-      if(sortSelect.value==="rating") list.sort((a,b)=>b.rating-a.rating);
+      if (sortSelect.value === "name") list.sort((a, b) => a.title.localeCompare(b.title));
+      if (sortSelect.value === "priceLow") list.sort((a, b) => a.price - b.price);
+      if (sortSelect.value === "priceHigh") list.sort((a, b) => b.price - a.price);
+      if (sortSelect.value === "rating") list.sort((a, b) => b.rating - a.rating);
       return list;
     }
 
-    function renderCourses(){
-  const list = getFilteredCourses();
+    function renderCourses() {
+      const list = getFilteredCourses();
 
-  grid.innerHTML = list.map(c => {
+      grid.innerHTML = list.map(c => {
 
-    const isPmp =
-      c.title === "PMP® Certification Training";
+        const isPmp =
+          c.title === "PMP® Certification Training";
 
-    const courseLink =
-      isPmp ? "pmp-details.html" : "index.html#enquiry";
+        const courseLink =
+          isPmp ? "pmp-details.html" : "index.html#enquiry";
 
-    return `
+        return `
       <article
         class="course${isPmp ? " pmp-clickable" : ""}"
         ${isPmp ? 'data-course-url="pmp-details.html" role="link" tabindex="0" aria-label="Open PMP Certification Training course"' : ""}
@@ -351,9 +884,8 @@
               $${c.price}
             </span>
 
-            ${
-              isPmp
-              ? `
+            ${isPmp
+            ? `
                 <a
                   href="pmp-details.html"
                   class="view"
@@ -361,7 +893,7 @@
                   View Course
                 </a>
               `
-              : `
+            : `
                 <a
                   href="index.html#enquiry"
                   class="view"
@@ -369,7 +901,7 @@
                   Enquire Now
                 </a>
               `
-            }
+          }
 
           </div>
 
@@ -378,21 +910,21 @@
       </article>
     `;
 
-  }).join("");
+      }).join("");
 
-  resultInfo.textContent =
-    `${list.length} course${list.length !== 1 ? "s" : ""} found`;
+      resultInfo.textContent =
+        `${list.length} course${list.length !== 1 ? "s" : ""} found`;
 
-  emptyState.style.display =
-    list.length ? "none" : "block";
-}
+      emptyState.style.display =
+        list.length ? "none" : "block";
+    }
 
     searchInput.addEventListener("input", renderCourses);
     sortSelect.addEventListener("change", renderCourses);
     document.querySelectorAll(".filters input").forEach(input => input.addEventListener("change", renderCourses));
     document.getElementById("clearFilters").addEventListener("click", () => {
-      document.querySelectorAll(".filters input").forEach(input => input.checked=false);
-      searchInput.value=""; sortSelect.value="default"; renderCourses();
+      document.querySelectorAll(".filters input").forEach(input => input.checked = false);
+      searchInput.value = ""; sortSelect.value = "default"; renderCourses();
     });
 
     // The entire PMP course card is clickable, not only its title or
@@ -425,7 +957,14 @@
       if (nav) nav.classList.toggle("show");
     }
 
+    const urlParams = new URLSearchParams(window.location.search);
+    const searchParam = urlParams.get("search");
+    if (searchParam && searchInput) {
+      searchInput.value = searchParam;
+    }
+
     renderCourses();
   </script>
 </body>
+
 </html>

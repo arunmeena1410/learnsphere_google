@@ -1,0 +1,16 @@
+# ==============================================================================
+# Learnsphere Robots Exclusion File
+# ==============================================================================
+User-agent: *
+Allow: /
+Allow: /courses
+Allow: /courses.html
+Allow: /pmp-details
+Allow: /pmp-details.html
+Allow: /images/
+
+# Protected Admin and Internal API routes
+Disallow: /admin
+Disallow: /admin.html
+Disallow: /api/
+Disallow: /health

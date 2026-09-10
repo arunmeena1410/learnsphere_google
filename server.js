@@ -3662,8 +3662,21 @@ for (const [routePath, fileName] of Object.entries(publicPages)) {
 
 // Favicon handler
 app.get("/favicon.ico", (req, res) => {
-  res.status(204).end();
+  res.sendFile(path.join(__dirname, "images", "learnsphere-logo.png"));
 });
+
+// Robots.txt handler
+app.get("/robots.txt", (req, res) => {
+  res.type("text/plain").sendFile(path.join(__dirname, "robots.txt"));
+});
+
+// Static assets (e.g. brand logos, course images) with 7-day client cache in production
+app.use(
+  "/images",
+  express.static(path.join(__dirname, "images"), {
+    maxAge: process.env.NODE_ENV === "production" ? "7d" : 0
+  })
+);
 
 // Explicit 404 for unhandled API endpoints
 app.use("/api", (req, res) => {
